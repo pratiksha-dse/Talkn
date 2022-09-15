@@ -48,7 +48,18 @@ answerRouter.post("/delanswer", (req, res) => {
     }
   });
 });
-
+answerRouter.post("/editanswer", (req, res) => {
+  Answer.findByIdAndUpdate(req.body.AID,req.body.answer, (err) => {
+    if (err) {
+      console.log("Answer failed to update");
+      res.status(500).json({
+        message: { msgBody: "Answer failed to delete", msgError: true },
+      });
+    } else {
+      console.log("Answer deleted successfully");
+    }
+  });
+});
 answerRouter.post("/answers", (req, res) => {
   console.log("Fetching answers", req.body.SEID);
   Answer.find().exec((err, document) => {

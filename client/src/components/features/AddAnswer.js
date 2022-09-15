@@ -158,6 +158,30 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     });
     setAnswers(removeItemOnce(tmpAnswers, answer));
   };
+  const editAnswer =(answer,AID)=>{
+    const tmpAnswers = [...answers];
+    AnswerService.editAnswer(answer,AID).then((data) => {
+      const { message } = data;
+      setMessage(message);
+    });
+    setAnswers(removeItemOnce(tmpAnswers, answer));
+  }
+  const upvoteAnswer =(answer,AID)=>{
+    answer.upvote=answer.upvote+1;
+    AnswerService.editAnswer(answer,AID).then((data) => {
+      const { message } = data;
+      setMessage(message);
+    });
+    alert("Answer upvoted")
+  }
+  const downvoteAnswer =(answer,AID)=>{
+    answer.downvote=answer.downvote+1;
+    AnswerService.editAnswer(answer,AID).then((data) => {
+      const { message } = data;
+      setMessage(message);
+    });
+    alert("Answer downvoted")
+  }
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
   const toggleQuestion = (questionIndex) => {
@@ -165,6 +189,7 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     else setActiveQuestionIndex(questionIndex);
   };
   const [answers, setAnswers] = useState([]);
+  
   return (
     // <AnimationRevealPage>
     <Container tw="m-8">
@@ -229,7 +254,7 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
                   <img src={answer.picture} alt="logo" css={logocss} />
                   <QuestionText>{answer.name}
                    </QuestionText>
-                  <p>Date: {answer.date} &nbsp;&nbsp;&nbsp;&nbsp;Time: {answer.time}</p>
+                  <p>Date: {answer.date} &nbsp;&nbsp;&nbsp;&nbsp; Time: {answer.time}</p>
                  <p> Upvote:{answer.upvote} Downvote:{answer.downvote}</p>
                   <QuestionToggleIcon
                     variants={{
@@ -272,7 +297,6 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
                     <br />
                   </p>
                   <p align="right">
-                    {/* <NewPrimaryButton as="a"> */}
                     {answer.email===user.email ? (
                       <NewPrimaryButton
                         as="a"
@@ -281,15 +305,31 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
                       >
                         {(primaryButtonText = "Delete")}
                       </NewPrimaryButton>
+                      
                     ) : (
                       <NewPrimaryButton
-                        as="a"
+                        as="b"
                         target="_blank"
                         href={answer.media}
                       >
                         {(primaryButtonText = "View")}
                       </NewPrimaryButton>
-                    )}
+                    )} &nbsp;&nbsp;
+                       <NewPrimaryButton
+                        as="c"
+                        ref={inputRef}
+                        onClick={() => upvoteAnswer(answer,answer._id)}
+                      >
+                        {(primaryButtonText = "Upvote")}
+                      </NewPrimaryButton> &nbsp;&nbsp;
+                      <NewPrimaryButton
+                        as="d"
+                        ref={inputRef}
+                        onClick={() => downvoteAnswer(answer,answer._id)}
+                      >
+                        {(primaryButtonText = "Downvote")}
+                      </NewPrimaryButton>
+
                   </p>
                 </Answer>
               </FAQ>
