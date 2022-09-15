@@ -30,10 +30,8 @@ export default () => {
       <>
         <AnimationRevealPage>
           <Hero getstarted="#bookaslot" />
-          {/* <div id="incidents">
-            <EventDetails />
-          </div> */}
-          <div id="addincidents">
+        
+          <div id="addquestions">
             <AddEvents />
           </div>
          

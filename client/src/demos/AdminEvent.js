@@ -32,9 +32,7 @@ export default () => {
           <div id="admin_incidents">
             <EventDetails />
           </div>
-          {/* <div id="addevents">
-            <AddEvents />
-          </div> */}
+         
          
         </AnimationRevealPage>
         <Footer />

@@ -10,7 +10,7 @@ import {
 } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
-import ResourceService from "../../Services/ResourceService";
+import AnswerService from "../../Services/AnswerService";
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/log-in.svg";
 import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chevron-down.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-7.svg";
@@ -65,10 +65,10 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-64 w-64 opacity-15 transform -translate-x-2/3 text-primary-500`}
 `;
 
-const AddResources = ({
-  subheading = "CapiBull",
-  heading = "Resources and References",
-  description = "Here are some resources and tools which will help you to manage and understand your finances easily.",
+const AddAnswers = ({
+  subheading = "Talkn",
+  heading = "Answers",
+  description = "Here are some answers and tools which will help you to manage and understand your finances easily.",
 
   primaryButtonText = "Learn More",
   primaryButtonUrl = "https://timerse.com",
@@ -76,17 +76,22 @@ const AddResources = ({
 }) => {
   const {
     user,
-    setUser,
-    isAuthenticated,
-    setIsAuthenticated,
     isAdmin,
-    setIsAdmin,
   } = useContext(AuthContext);
-  const [resource, setResource] = useState({
-    title: "",
-    description: "",
+  let currentDate = new Date();
+let date=currentDate.getDate()+ "/" +(currentDate.getMonth() + 1) + "/" + currentDate.getFullYear();
+let time = currentDate.getHours() + ":" + currentDate.getMinutes();
+  const [answer, setAnswer] = useState({
+    answer: "",
     media: "",
     SEID: SEID,
+    email:user.email,
+    name:user.name,
+    picture:user.picture,
+    date:date,
+    time:time,
+    upvote:0,
+    downvote:0,
   });
   const [message, setMessage] = useState(null);
   let timerID = useRef(null);
@@ -98,38 +103,43 @@ const AddResources = ({
   }, []);
 
   const onChange = (e) => {
-    setResource({ ...resource, [e.target.name]: e.target.value });
+    setAnswer({ ...answer, [e.target.name]: e.target.value });
   };
 
   const resetForm = () => {
-    setResource({
-      title: "",
-      description: "",
+    setAnswer({
+      answer: "",
       media: "",
       SEID: "",
+      email:"",
+      name:"",
+      picture:"",
+      date:"",
+      time:"",
+      upvote:0,
+      downvote:0,
     });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const tmpResources = [...resources, resource];
-    ResourceService.postResource(resource).then((data) => {
+    const tmpAnswers = [...answers, answer];
+    AnswerService.postAnswer(answer).then((data) => {
       const { message } = data;
       setMessage(message);
       resetForm();
       if (!message.msgError) {
         timerID = setTimeout(() => {
-          //   props.history.push("/#/add");
         }, 2000);
       }
     });
-    setResources(tmpResources);
+    setAnswers(tmpAnswers.reverse());
   };
   const inputRef = useRef();
   useEffect(() => {
-    ResourceService.getResources(SEID).then((data) => {
-      setResources(data.resources);
-      console.log(resources);
+    AnswerService.getAnswers(SEID).then((data) => {
+      setAnswers(data.answers.reverse());
+      console.log(answers);
     });
   }, [inputRef]);
 
@@ -140,13 +150,13 @@ const AddResources = ({
     }
     return arr;
   }
-  const deleteResource = (resource) => {
-    const tmpResources = [...resources];
-    ResourceService.delResource(resource).then((data) => {
+  const deleteAnswer = (answer) => {
+    const tmpAnswers = [...answers];
+    AnswerService.delAnswer(answer).then((data) => {
       const { message } = data;
       setMessage(message);
     });
-    setResources(removeItemOnce(tmpResources, resource));
+    setAnswers(removeItemOnce(tmpAnswers, answer));
   };
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
@@ -154,20 +164,20 @@ const AddResources = ({
     if (activeQuestionIndex === questionIndex) setActiveQuestionIndex(null);
     else setActiveQuestionIndex(questionIndex);
   };
-  const [resources, setResources] = useState([]);
+  const [answers, setAnswers] = useState([]);
   return (
     // <AnimationRevealPage>
     <Container tw="m-8">
       <ContentWithPaddingXl>
         <Column>
-          {isAdmin ? (
+          {!isAdmin ? (
             <>
               <HeaderContent>
                 {/* <Subheading>CapiBull</Subheading> */}
-                <Heading>Add Resources and References</Heading>
+                <Heading>Add Answers</Heading>
                 <p align="center">
                   <Description>
-                    Add title, description and link to resources through this
+                    Add answer and link to answers through this
                     page.
                   </Description>
                 </p>
@@ -178,22 +188,15 @@ const AddResources = ({
               <Form onSubmit={onSubmit}>
                 <Input
                   type="text"
-                  name="title"
-                  value={resource.title}
+                  name="answer"
+                  value={answer.answer}
                   onChange={onChange}
-                  placeholder="Title"
-                />
-                <Input
-                  type="text"
-                  name="description"
-                  value={resource.description}
-                  onChange={onChange}
-                  placeholder="Description"
+                  placeholder="Answer"
                 />
                 <Input
                   type="url"
                   name="media"
-                  value={resource.media}
+                  value={answer.media}
                   onChange={onChange}
                   placeholder="File Link"
                 />
@@ -206,15 +209,15 @@ const AddResources = ({
                 </p>
               </Form>
             </>
-          ) : (  <HeaderContent>
+          ) : null}  <HeaderContent>
             {/* <Subheading>ClubNation</Subheading> */}
-                <Heading>Resources</Heading>
+                <Heading>Answers</Heading>
                 <p align="center">
-               <Description>Here are some resources and tools which will help you.</Description> 
+               {/* <Description>Here are some answers and tools which will help you.</Description>  */}
                 </p>
-              </HeaderContent>)}
+              </HeaderContent>
           <FAQSContainer>
-            {resources.map((resource, index) => (
+            {answers.map((answer, index) =>  (
               <FAQ>
                 <Question
                   key={index}
@@ -223,8 +226,11 @@ const AddResources = ({
                   }}
                   className="group"
                 >
-                  <img src={Logopdf} alt="logo" css={logocss} />
-                  <QuestionText>{resource.title}</QuestionText>
+                  <img src={answer.picture} alt="logo" css={logocss} />
+                  <QuestionText>{answer.name}
+                   </QuestionText>
+                  <p>Date: {answer.date} &nbsp;&nbsp;&nbsp;&nbsp;Time: {answer.time}</p>
+                 <p> Upvote:{answer.upvote} Downvote:{answer.downvote}</p>
                   <QuestionToggleIcon
                     variants={{
                       collapsed: { rotate: 0 },
@@ -261,17 +267,17 @@ const AddResources = ({
                     }}
                     className="group"
                   >
-                    {resource.description}
+                    {answer.answer}
                     <br />
                     <br />
                   </p>
                   <p align="right">
                     {/* <NewPrimaryButton as="a"> */}
-                    {isAdmin ? (
+                    {answer.email===user.email ? (
                       <NewPrimaryButton
                         as="a"
                         ref={inputRef}
-                        onClick={() => deleteResource(resource)}
+                        onClick={() => deleteAnswer(answer)}
                       >
                         {(primaryButtonText = "Delete")}
                       </NewPrimaryButton>
@@ -279,7 +285,7 @@ const AddResources = ({
                       <NewPrimaryButton
                         as="a"
                         target="_blank"
-                        href={resource.media}
+                        href={answer.media}
                       >
                         {(primaryButtonText = "View")}
                       </NewPrimaryButton>
@@ -294,8 +300,7 @@ const AddResources = ({
       <DecoratorBlob1 />
       <DecoratorBlob2 />
     </Container>
-    // </AnimationRevealPage>
   );
 };
 
-export default AddResources;
+export default AddAnswers;

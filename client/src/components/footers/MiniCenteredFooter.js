@@ -45,8 +45,6 @@ export default () => {
     return (
       <>
         <Link href="#about">Home</Link>
-        {/* <Link href="#login">Login</Link> */}
-        {/* <Link href="#login">Resources</Link> */}
         <Link href="#about">About</Link>
         <Link href="#letstalk">Contact Us</Link>
       </>

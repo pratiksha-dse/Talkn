@@ -76,8 +76,8 @@ const Navbar = (props) => {
   const authenticatedNavBar = () => {
     return (
       <>  <NavLink href="#about">Home</NavLink>
-      <NavLink href="#incidents">Incidents</NavLink>
-      <NavLink href="#addincidents">Add Incident</NavLink>
+      <NavLink href="#questions">Questions</NavLink>
+      <NavLink href="#addquestions">Add Question</NavLink>
       <NavLink href="#letstalk">Contact Us</NavLink>
       </>
     );

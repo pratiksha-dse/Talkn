@@ -202,8 +202,8 @@ export default () => {
     <Container>
       <Content>
         <HeaderContent>
-          <Subheading>ChildFly</Subheading>
-          <Heading>Incidents</Heading>
+          <Subheading>Talkn</Subheading>
+          <Heading>Questions</Heading>
         </HeaderContent>
         {/* {searchBar()} */}
         {searchByPlace()}
@@ -251,9 +251,6 @@ export default () => {
                       </IconContainer>
                       <Text>{event.status}</Text>
                     </IconWithText>
-              
-               
-                 
                   </SecondaryInfoContainer>
                   <SecondaryInfoContainer>
                   <IconWithText>
@@ -265,9 +262,11 @@ export default () => {
              </SecondaryInfoContainer>
                   {/* <Description>{event.description}</Description> */}
                 </TextInfo>
-                <a href={isAdmin?("#/admin_incident?" + event._id):("#/incident_edit?" + event._id)}>
-                {/* <a href={"#/admin_event_edit?"+event._id}> */}
-                    <PrimaryButton>Incident Details</PrimaryButton>
+                <a href={event.email===user.email?("#/question_edit?" + event._id):("#/question?"+event._id)}>
+              {  event.email===user.email?
+                    (<PrimaryButton>Update Question Details</PrimaryButton>):
+                    (<PrimaryButton>Answer the question</PrimaryButton>)
+              }
                   </a>
               </Card>
               );

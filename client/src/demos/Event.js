@@ -47,7 +47,7 @@ export default () => {
         <>
           <AnimationRevealPage>
             <Hero getstarted="#bookaslot" />
-            <div id="incidents">
+            <div id="questions">
               <UserEventDetails />
             </div>
 

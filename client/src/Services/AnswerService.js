@@ -1,6 +1,6 @@
 export default {
-  getResources: (SEID) => {
-    return fetch("/resource/resources", {
+  getAnswers: (SEID) => {
+    return fetch("/answer/answers", {
       method: "post",
       body: JSON.stringify({SEID: SEID}),
       headers: {
@@ -12,10 +12,10 @@ export default {
       } else return { message: { msgBody: "UnAuthorized", msgError: true } };
     });
   },
-  postResource: (resource) => {
-    return fetch("/resource/addresource", {
+  postAnswer: (answer) => {
+    return fetch("/answer/addanswer", {
       method: "post",
-      body: JSON.stringify(resource),
+      body: JSON.stringify(answer),
       headers: {
         "Content-Type": "application/json",
       },
@@ -25,10 +25,10 @@ export default {
       } else return { message: { msgBody: "UnAuthorized" }, msgError: true };
     });
   },
-  delResource: (resource) => {
-    return fetch("/resource/delresource", {
+  delAnswer: (answer) => {
+    return fetch("/answer/delanswer", {
       method: "post",
-      body: JSON.stringify(resource),
+      body: JSON.stringify(answer),
       headers: {
         "Content-Type": "application/json",
       },

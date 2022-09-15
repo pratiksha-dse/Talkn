@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/BackgroundAsImageWithCenteredContent.js";
 
-import AddResources from "components/features/AddResources.js";
+import AddAnswers from "components/features/AddAnswer.js";
 
 import EventService from "../Services/EventService";
 
@@ -14,7 +14,7 @@ import MainFeature1 from "components/features/TwoColWithButton.js";
 // import ContactUsForm from "components/forms/SimpleContactUs.js";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import { AuthContext } from "../Context/AuthContext";
-import AdminEventDedicated from "components/features/AdminEventDedicated";
+import EventDedicated from "components/features/EventDedicated";
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 
@@ -38,33 +38,26 @@ export default (props) => {
 
   console.log(eventID);
   console.log(event);
-  const adminLP = () => {
+  const authLP = () => {
     return (
       <>
         <AnimationRevealPage>
           <Hero getstarted="#bookaslot" />
-          {/* <div id="event">
-            <EventDetails />
-          </div> */}
-          {/* <div id="addevent">
-            <AddEvents />
-          </div> */}
+        
           <div id="eventdedicated">
-            <AdminEventDedicated event={event} SEID={eventID}/>
+            <EventDedicated event={event} SEID={eventID}/>
           </div>
-          {/* <div id="addresources">
-            <AddResources SEID={eventID} />
-          </div> */}
-          {/* <div id="addresources">
-            <ShowResources SEID={eventID} />
-          </div> */}
+          <div id="addanswers">
+            <AddAnswers SEID={eventID} email={user.email}/>
+          </div>
+         
         </AnimationRevealPage>
         <Footer />
       </>
     );
   };
   const page = () => {
-    if (isAuthenticated && isAdmin) return adminLP();
+    if (isAuthenticated && !isAdmin) return authLP();
   };
   return <>{page()}</>;
 };

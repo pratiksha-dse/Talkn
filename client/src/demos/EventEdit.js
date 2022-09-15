@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/BackgroundAsImageWithCenteredContent.js";
 
-import AddResources from "components/features/AddResources.js";
+import AddAnswers from "components/features/AddAnswer.js";
 
 import EventService from "../Services/EventService";
 
@@ -52,10 +52,10 @@ export default (props) => {
           </div> */}    <div id="eventdedicated">
             <EventDedicated event={event} />
           </div>
-          {/* <div id="addresources">
-            <AddResources SEID={eventID} />
-          </div> */}
-          <div id="incident_edit">
+          <div id="addanswers">
+            <AddAnswers SEID={eventID}  />
+          </div>
+          <div id="questionedit">
             <EventEdit eventOld={event} SEID={eventID} />
           </div>
         </AnimationRevealPage>

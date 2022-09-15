@@ -21,8 +21,9 @@ eventRouter.post("/addevent", (req, res) => {
 
   });
   
-
+console.log("adding event",newEvent)
   newEvent.save((err) => {
+    console.log("err",err)
     if (err)
       res.status(500).json({
         message: { msgBody: "Error has occured", msgError: true },

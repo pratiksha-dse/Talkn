@@ -3,21 +3,20 @@ const express = require('express');
 const cors = require("cors");
 const app = express();
 const cookieParser = require('cookie-parser');
-
 const mongoose = require('mongoose');
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
 
 const connection = process.env.MONGODB;
-mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log("Database Connected Successfully"))
     .catch(err => console.log(err));
 const userRouter = require('./routes/User');
 app.use('/user',userRouter);
 
-const resourceRouter = require('./routes/Resource');
-app.use('/resource',resourceRouter);
+const answerRouter = require('./routes/Answer');
+app.use('/answer',answerRouter);
 
 const eventRouter = require('./routes/Event');
 app.use('/event',eventRouter);

@@ -4,7 +4,6 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 1,
-        
     },
     img: {
         type: String,
@@ -37,11 +36,6 @@ const EventSchema = new mongoose.Schema({
         required:true,
         min:1
     },
-    account:{
-        type: String,
-        required:true,
-        min:1
-    },
     status:{
         type:String,
         required:true,
@@ -49,7 +43,7 @@ const EventSchema = new mongoose.Schema({
     },
  
    
-//    Eresources: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
+   answers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
 });
 
 module.exports = mongoose.model('Event', EventSchema);

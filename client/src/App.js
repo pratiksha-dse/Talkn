@@ -22,9 +22,10 @@ export default function App() {
       <Switch>
        
       
-        <UserRoute exact path="/incidents" component={Event} />
-        <UserRoute path="/incident_edit" component={EventEdit} />
-        <UserRoute path="/addincidents" component={AddEvent} />
+        <UserRoute exact path="/questions" component={Event} />
+        <UserRoute path="/question_edit" component={EventEdit} />
+        <UserRoute path="/question" component={EventView} />
+        <UserRoute path="/addquestions" component={AddEvent} />
         {/* <UserRoute path="/your_incidents" component={YourEvents} /> */}
 
         <AdminRoute exact path="/admin_incidents" component={AdminEvent} />
