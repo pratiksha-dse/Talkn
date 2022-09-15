@@ -1,0 +1,50 @@
+{
+  "name": "qlink-acmw",
+  "version": "1.0.0",
+  "description": "# Theme Blockchain",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build"
+  },
+  "keywords": [],
+  "author": "prati",
+  "license": "ISC",
+  "engines": {
+    "node": "14.17.6"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bootstrap": "^5.2.1",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "firebase": "^9.9.4",
+    "google-auth-library": "^8.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^10.0.0",
+    "mongoose": "^6.6.1",
+    "mongoose-findorcreate": "^3.0.0",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.7.8",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^7.1.2",
+    "react-bootstrap": "^2.5.0",
+    "react-phone-number-input": "^3.2.11",
+    "serve": "^14.0.1",
+    "solc": "^0.8.17",
+    "typescript": "^4.8.3",
+    "web-vitals": "^3.0.2"
+  }
+}

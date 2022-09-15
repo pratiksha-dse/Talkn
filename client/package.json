@@ -1,0 +1,80 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "14.17.6"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.4.3",
+    "@heroicons/react": "^1.0.5",
+    "@owaiswiz/use-in-view": "^1.0.16",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.5",
+    "cors": "^2.8.5",
+    "datejs": "^1.0.0-rc3",
+    "express": "^4.17.2",
+    "feather-icons": "^4.28.0",
+    "firebase": "^8.6.2",
+    "framer-motion": "^4.1.5",
+    "google-auth-library": "^7.14.0",
+    "headlessui": "0.0.0",
+    "heroicons": "^1.0.5",
+    "mdbreact": "^5.2.0",
+    "nodemailer": "^6.7.2",
+    "react": "^17.0.2",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-bootstrap": "^2.1.1",
+    "react-confirm": "^0.1.24",
+    "react-dom": "^17.0.2",
+    "react-github-btn": "^1.2.0",
+    "react-google-login": "^5.2.2",
+    "react-modal": "^3.13.1",
+    "react-rnd": "^10.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.2.3",
+    "tailwindcss": "^2.1.1",
+    "twin.macro": "^2.3.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && netlify deploy --prod --dir=build"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "overrides": [
+      {
+        "files": [
+          "src/**/*.js"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "resolutions": {
+    "mini-css-extract-plugin": "~2.4.5"
+  },
+  "proxy": "http://localhost:5000"
+}
