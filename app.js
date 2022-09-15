@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 const connection = process.env.MONGODB;
-mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, })
+mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Database Connected Successfully"))
     .catch(err => console.log(err));
 const userRouter = require('./routes/User');
