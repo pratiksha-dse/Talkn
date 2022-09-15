@@ -215,7 +215,7 @@ export default () => {
 
            {events.map((event, index)=> {
             console.log(user.email);
-            if (((query1=="" && query2=="")|| (query2!="" && event.title.match(query2)) ||(query1!="" && event.title.match(query1))) && (event.email.match(user.email)) ) {
+            if ((query1=="" && query2=="")|| (query2!="" && event.title.match(query2)) ||(query1!="" && event.title.match(query1)) ) {
               return (
                 <Card key={index}>
            <CardImage imageSrc={event.img} />
