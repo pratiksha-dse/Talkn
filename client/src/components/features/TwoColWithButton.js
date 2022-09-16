@@ -27,9 +27,9 @@ const SocialLink = styled.a`
 const Container = tw.div`relative m-8`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto my-auto py-20 md:py-4 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto my-auto md:max-w-none md:mx-0`;
-const ImageColumn = tw(Column)`md:w-1/3 flex-shrink-0 relative`;
+const ImageColumn = tw(Column)`md:w-1/4 flex-shrink-0 relative`;
 const TextColumn = styled(Column)((props) => [
-  tw`md:w-2/3 mt-16 md:mt-0`,
+  tw`md:w-3/4 mt-16 md:mt-0`,
   props.textOnLeft
     ? tw`md:ml-12 lg:ml-16 md:order-last`
     : tw`md:mr-12 lg:mr-16 md:order-first`,
@@ -52,7 +52,7 @@ const Subheading = tw(SubheadingBase)`text-center md:text-center`;
 const Heading = tw(
   SectionHeading
 )`mt-4 font-black text-center text-3xl sm:text-4xl lg:text-5xl text-center md:text-center leading-tight`;
-const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-500`;
+const Description = tw.p`mt-4 text-center text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-500 mx-16`;
 
 const PrimaryButton = styled(PrimaryButtonBase)((props) => [
   tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0`,
@@ -67,9 +67,9 @@ export default ({
     </>
   ),
   // description = "CapiBull is a one-stop pro-bono solution to all your hesitations relating to personal finance. We provide the basic personal financial advisory you need to embark on your financial freedom.",
-  description = "Child labour is indeed a curse to our society and a crime against humanity. Although more prevalent in developing countries, it is definately a universal phenomenon. Thousands of children all over the Western World work in fast food centres, gas stations, newspaper selling, cleaning of cars, in garment and leather factories. They have to grind bricks and stones. ",
-  description2 ="Sometimes we want masters apprehended and imprisoned. But many people wonder what they would get if they report for the same? Will the transactions be completely fair even if the government passes a law rewarding individuals who report child labour?",
-  description3= "Don't worry, we have a way for rewarding those who report any actual occurrence of child labour using blockchain. So, Simply report any occurrence involving child labour to earn ether ( A crpytocurrancy ).",
+  description = "Warm welcome to our website!! Want to grow your social status and knowledge? Here we are giving you an opportunity to get answers to all of your questions and a platform to build amazing communities to grow at a very high pace along with the world. ",
+  // description2 ="Sometimes we want masters apprehended and imprisoned. But many people wonder what they would get if they report for the same? Will the transactions be completely fair even if the government passes a law rewarding individuals who report child labour?",
+  // description3= "Don't worry, we have a way for rewarding those who report any actual occurrence of child labour using blockchain. So, Simply report any occurrence involving child labour to earn ether ( A crpytocurrancy ).",
   // primaryButtonText = "Learn More",
   primaryButtonUrl = "https://timerse.com",
   imageSrc = TeamIllustrationSrc,
@@ -104,8 +104,8 @@ export default ({
             <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
-            <Description>{description2}</Description>
-            <Description>{description3}</Description>
+            {/* <Description>{description2}</Description> */}
+            {/* <Description>{description3}</Description> */}
             <SocialLinksContainer>
             </SocialLinksContainer>
           </TextContent>

@@ -45,15 +45,12 @@ export default (props) => {
         <HeroContainer>
           <Navbar />
           <Content>
-            <Heading>Want to make money by doing good?
+            <Heading> Let's get Talkn!
               <br />
             </Heading>
             <Subheading>
-              Report any Child Labour incident and earn ethers after verification of complaint by Inspector.
-              <br/>Do you have concerns about authenticity?
-              <br/>Let me tell you that the award will be transferred to you in the form of the safest transactions, namely cryptocurrency. 
-              
-              </Subheading>
+              Let's grow and learn together!
+            </Subheading>
             <PrimaryAction href="#about">Get Started</PrimaryAction>
           </Content>
         </HeroContainer>
@@ -67,18 +64,13 @@ export default (props) => {
         <HeroContainer>
           <Navbar />
           <Content>
-            <Heading>
-          Welcome!
-          <br />
-        </Heading>
-        <Subheading>
-        Report any Child Labour incident and earn ethers after verification of complaint by Inspector.
-        <br/>
-        Add all incident details to assist India become powerful.
-        <br/>
-         
-        </Subheading>
-        <PrimaryAction href="#about">Get Started</PrimaryAction>
+            <Heading> Let's get Talkn!
+              <br />
+            </Heading>
+            <Subheading>
+              Let's grow and learn together!
+            </Subheading>
+            <PrimaryAction href="#about">Get Started</PrimaryAction>
           </Content>
         </HeroContainer>
       </Container>
