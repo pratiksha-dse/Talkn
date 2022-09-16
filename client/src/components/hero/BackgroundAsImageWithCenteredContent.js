@@ -10,7 +10,7 @@ import { Subheading as SubheadingBase } from "components/misc/Headings.js";
 
 const Container = styled.div`
   ${tw`relative -m-8 bg-center bg-cover h-screen min-h-144`}
-  background-image: url("https://t3.ftcdn.net/jpg/02/03/47/78/240_F_203477844_mRvT1yO8raGrHfaxvxZEbTCcZyvyQE43.jpg");
+  background-image: url("https://media.istockphoto.com/photos/group-of-friends-huddle-in-rear-view-together-picture-id668218790?k=20&m=668218790&s=612x612&w=0&h=46YRjTxpjo_KP6Dca_D3ZWxPqRAp-S9vnYfsepOFvLU=");
 `;
 
 const OpacityOverlay = tw.div`z-10 absolute inset-0 bg-black opacity-75`;
