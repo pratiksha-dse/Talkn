@@ -103,7 +103,7 @@ const AddEvents = ({
                         <Heading>Add Question</Heading>
                         <p align="center">
                             <Description>
-                                Add tag , image and your question.</Description> 
+                                Add your question with it's category and Image.</Description> 
                         </p>
                     </HeaderContent>
                     <br />

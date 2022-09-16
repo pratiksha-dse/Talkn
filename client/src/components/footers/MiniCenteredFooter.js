@@ -106,7 +106,7 @@ export default () => {
             </SocialLink>
           </SocialLinksContainer>
           <CopyrightText>
-            Made by the team of Palak Sharma, Prateeksha Pal and Shashwat Sharma.
+            Made by the team of Rijul Jain, Palak Sharma and Prateeksha Pal.
           </CopyrightText>
         </Row>
       </Content>
