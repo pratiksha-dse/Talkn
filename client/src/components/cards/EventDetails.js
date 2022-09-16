@@ -195,8 +195,7 @@ export default () => {
             placeholder="Search by Status"
           />
         </Form>
-      </FormContainer>
-      
+      </FormContainer>      
     );
   };
   const searchByEmail = () => {

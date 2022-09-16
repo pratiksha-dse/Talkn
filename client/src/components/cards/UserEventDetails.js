@@ -232,7 +232,7 @@ export default () => {
                     </IconWithText>
                   <IconWithText>
                       <IconContainer>
-                        <TimeIcon />
+                        <MailIcon />
                       </IconContainer>
                       <Text>{event.email}</Text>
                     </IconWithText>
@@ -255,7 +255,7 @@ export default () => {
                   <SecondaryInfoContainer>
                   <IconWithText>
                       <IconContainer>
-                      <TimeIcon />
+                      <MailIcon /> 
                       </IconContainer>
                       <Text>Topic Tag: {event.tag}</Text>
                     </IconWithText>

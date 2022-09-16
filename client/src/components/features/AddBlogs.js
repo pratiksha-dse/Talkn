@@ -103,7 +103,7 @@ const AddBlogs = ({
                         <Heading>Add Blog</Heading>
                         <p align="center">
                             <Description>
-                                Add tag and description of your blog</Description> 
+                                Add category and description of your blog</Description> 
                         </p>
                     </HeaderContent>
                     <br />
