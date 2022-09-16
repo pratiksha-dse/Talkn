@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 const BlogSchema = new mongoose.Schema({
+    title:{
+        type:String,
+        required:true,
+        min:1,
+    },
     tag: {
         type: String,
         required: true,

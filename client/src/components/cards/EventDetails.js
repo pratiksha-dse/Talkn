@@ -238,7 +238,7 @@ export default () => {
                 <TextInfo>
                   <TitleReviewContainer>
                     <Title>{event.title}</Title>
-                  
+                
                     {/* <RatingsInfo>
                       <StarIcon />
               <Rating>{event.rating}</Rating>

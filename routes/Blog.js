@@ -5,9 +5,10 @@ const Blog = require("../models/Blog");
 
 blogRouter.post("/addblog", (req, res) => {
   console.log("doing2");
-  const { tag, img, date, time,  description,email,name,picture } = req.body;
+  const { title,tag, img, date, time,  description,email,name,picture } = req.body;
 
   const newBlog = new Blog({
+    title:title,
     tag:tag,
     img:img,
     date:date,
@@ -49,7 +50,7 @@ blogRouter.post("/delblog", (req, res) => {
 });
 blogRouter.post("/editblog", (req, res) => {
   console.log(req.body.blog)
-  Blog.findByIdAndUpdate(req.body.SEID, req.body.blog, (err) => {
+  Blog.findByIdAndUpdate(req.body.BID, req.body.blog, (err) => {
     if (err) {
       console.log("Blog failed to update");
       res.status(500).json({

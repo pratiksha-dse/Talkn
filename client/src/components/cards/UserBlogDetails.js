@@ -215,13 +215,11 @@ export default () => {
            <CardImage imageSrc={blog.img}/>
                 <TextInfo>
                   <TitleReviewContainer>
-                    <Title>{blog.tag}</Title>
+                    <Title>{blog.title}</Title>
                   </TitleReviewContainer>
                   <SecondaryInfoContainer>
                   <IconWithText>
-                      {/* <IconContainer> */}
                       <img width="25" height="25" border-radius="4px" src={blog.picture} alt="user" css={logocss} />
-                      {/* </IconContainer> */}
                       <Text>{blog.name}</Text>
                     </IconWithText>
                   <IconWithText>
@@ -239,22 +237,21 @@ export default () => {
                       <IconContainer>
                         <DateIcon />
                       </IconContainer>
-                      <Text>{blog.date}</Text>
+                      <Text>Date: {blog.date}</Text>
                     </IconWithText>
                     <IconWithText>
                       <IconContainer>
                         <TimeIcon />
                       </IconContainer>
-                      <Text>{blog.time}</Text>
+                      <Text>Time: {blog.time}</Text>
                     </IconWithText>
                   </SecondaryInfoContainer>
                   <SecondaryInfoContainer>
-                 
                   <IconWithText>
                       <IconContainer>
                         <TimeIcon />
                       </IconContainer>
-                      <Text>{blog.tag}</Text>
+                      <Text>Tag: {blog.tag}</Text>
                     </IconWithText>
              </SecondaryInfoContainer>
                   

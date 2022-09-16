@@ -68,6 +68,7 @@ const BlogEdit = ({
   blogOld={}
 }) => {
   const [blog, setBlog] = useState({
+    title:"",
     tag: "",
     img: "",
     date: "",
@@ -93,6 +94,7 @@ const BlogEdit = ({
 
   const resetForm = () => {
     setBlog({
+      title:"",
       tag: "",
       img: "",
       date: "",
@@ -110,6 +112,7 @@ const BlogEdit = ({
     const tmpBlogs = [...blogs, blog];
     console.log(blog);
     const newBlog = {
+      title: blog.title === "" ? blogOld.title : blog.title,
       tag: blog.tag === "" ? blogOld.tag : blog.tag,
       img: blog.img === "" ? blogOld.img : blog.img,
       date:blogOld.date,
@@ -165,7 +168,7 @@ const BlogEdit = ({
             <Heading>Update Blog</Heading>
             <p align="center">
               <Description>
-                Update tag, description of the blog.
+                Update title, tag, description of the blog.
               </Description>
             </p>
           </HeaderContent>
@@ -173,6 +176,13 @@ const BlogEdit = ({
           <br />
           <br />
           <Form onSubmit={onSubmit}>
+          <Input
+              type="text"
+              name="title"
+              value={blog.title}
+              onChange={onChange}
+              placeholder="Title"
+            />
             <Input
               type="text"
               name="tag"

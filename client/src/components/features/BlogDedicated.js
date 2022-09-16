@@ -141,12 +141,19 @@ export default ({
           <TextContent>
             {/* {subheading && <Subheading>{datE}</Subheading>} */}
             <Heading>
-              {(blog ? blog.description : null)
+              {(blog ? blog.title : null)
                 ? blog
-                  ? blog.description
+                  ? blog.title
                   : null
                 : heading}
             </Heading>
+            <Description>
+            {(blog ? blog.description : null)
+                ? blog
+                  ? blog.description
+                  : null
+                : description}
+            </Description>
             <Description>
                 Tag: {taG}
             </Description>

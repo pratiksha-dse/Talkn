@@ -43,6 +43,7 @@ const AddBlogs = ({
     let date=currentDate.getDate()+ "/" +(currentDate.getMonth() + 1) + "/" + currentDate.getFullYear();
     let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     const [blog, setBlog] = useState({
+        title:"",
         tag: "",
         img:"",
         date: date,
@@ -69,6 +70,7 @@ const AddBlogs = ({
 
     const resetForm = () => {
         setBlog({
+            title:"",
             tag: "",
             img: "",
             date: "",
@@ -103,13 +105,20 @@ const AddBlogs = ({
                         <Heading>Add Blog</Heading>
                         <p align="center">
                             <Description>
-                                Add category and description of your blog</Description> 
+                                Add title, category and description of your blog</Description> 
                         </p>
                     </HeaderContent>
                     <br />
                     <br />
                     <br />
                     <Form onSubmit={onSubmit}>
+                    <Input
+                            type="text"
+                            name="title"
+                            value={blog.title}
+                            onChange={onChange}
+                            placeholder="Title of Blog"
+                        />
                         <Input
                             type="text"
                             name="tag"
