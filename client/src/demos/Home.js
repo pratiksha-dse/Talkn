@@ -6,7 +6,7 @@ import LetUsTalk from "components/LetsTalk";
 
 import tw from "twin.macro";
 import MainFeature1 from "components/features/TwoColWithButton.js";
-import img from "images/labour.svg";
+import img from "images/Gd.svg";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import { AuthContext } from "../Context/AuthContext";
 
@@ -29,15 +29,12 @@ export default () => {
           <Hero getstarted="#login" />
           <div id="about">
             <MainFeature1
-              subheading={<Subheading>Let every child fly :)</Subheading>}
-              heading="Stop Child Labour!"
+              subheading={<Subheading></Subheading>}
+              heading="Struggling with doubts? "
               buttonRounded={false}
               imageSrc={img}
             />
           </div>
-          {/* <div id="login">
-          <LoginSignup />
-        </div> */}
           <div id="letstalk">
             <LetUsTalk />
           </div>

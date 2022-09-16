@@ -37,7 +37,7 @@ export const LogoLink = styled(NavLink)`
   ${tw` flex items-center font-black border-b-0 text-2xl! ml-0!`};
 
   img {
-    ${tw` rounded-full w-40`}
+    ${tw` rounded-full w-40 `}
   }
 `;
 
