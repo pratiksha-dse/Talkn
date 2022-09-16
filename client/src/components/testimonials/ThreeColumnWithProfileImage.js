@@ -14,7 +14,7 @@ import market from "images/market.png";
 const Subheading = tw(SubheadingBase)`text-center`;
 const Testimonials = tw.div`flex flex-col lg:flex-row items-center lg:items-stretch`;
 const TestimonialContainer = tw.div`mt-16 lg:w-1/3`;
-const Testimonial = tw.div`px-4 pb-8 text-center max-w-xs mx-2 flex flex-col items-center border-4 shadow-xl`;
+const Testimonial = tw.div`px-4 pb-8 text-center max-w-xs h-128 mx-2 flex flex-col items-center border-4 shadow-xl`;
 const Image = tw.img`w-48 h-48 rounded-2xl`;
 const Quote = tw.blockquote`mt-5 text-gray-600 font-medium leading-loose`;
 const CustomerName = tw.p`mt-5 p-4 text-gray-900 font-semibold uppercase text-xl tracking-wide`;
