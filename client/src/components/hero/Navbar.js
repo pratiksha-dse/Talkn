@@ -84,20 +84,21 @@ const Navbar = (props) => {
       </>
     );
   };
-  const adminNavBar = () => {
-    return (
-      <>
-        <NavLink href="#about">Home</NavLink>
-        <NavLink href="#admin_incidents">Incidents</NavLink> 
-      </>
-    );
-  };
+  // const adminNavBar = () => {
+  //   return (
+  //     <>
+  //       <NavLink href="#about">Home</NavLink>
+  //       <NavLink href="#admin_incidents">Incidents</NavLink> 
+  //     </>
+  //   );
+  // };
 
   const navlinks = () => {
     if (!isAuthenticated) return unauthenticatedNavBar();
     else {
-      if (isAdmin) return adminNavBar();
-      else return authenticatedNavBar();
+      // if (isAdmin) return adminNavBar();
+      // else return 
+      return authenticatedNavBar();
     }
   };
   const [Userdetail, setUserdetail] = useState({
