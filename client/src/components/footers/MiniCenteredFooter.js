@@ -54,9 +54,9 @@ export default () => {
     return (
       <>
         <Link href="#about">Home</Link>
-        <Link href="#incidents">Incidents</Link>
-        <Link href="#addincidents">Add Incidents</Link>
-        <Link href="#letstalk">Contact Us</Link>
+      <Link href="#questions">Questions</Link>
+      <Link href="#blogs">Blogs</Link>
+      <Link href="#letstalk">Contact Us</Link>
       </>
     );
   }; 
@@ -106,7 +106,7 @@ export default () => {
             </SocialLink>
           </SocialLinksContainer>
           <CopyrightText>
-            Made by the team of Palak Sharma, Prateeksha Pal and Shashwat Sharma.
+            Made by the team of Palak Sharma, Prateeksha Pal and Rijul Jain.
           </CopyrightText>
         </Row>
       </Content>
