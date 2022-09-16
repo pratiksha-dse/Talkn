@@ -114,7 +114,7 @@ const Navbar = (props) => {
     };
   }, []);
   const handleFailure = (result) => {
-    alert("Login failed. Please try again later.");
+    // alert("Login failed. Please try again later.");
     console.log(result);
   };
   const handleLogin = (result) => {

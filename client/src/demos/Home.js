@@ -12,7 +12,7 @@ import blog from "images/blog.png";
 
 import tw from "twin.macro";
 import MainFeature1 from "components/features/TwoColWithButton.js";
-import img from "images/Gd.svg";
+import img from "images/people.png";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import { AuthContext } from "../Context/AuthContext";
 
