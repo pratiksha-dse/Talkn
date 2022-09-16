@@ -5,7 +5,7 @@ const Blog = require("../models/Blog");
 
 blogRouter.post("/addblog", (req, res) => {
   console.log("doing2");
-  const { title,tag, img, date, time,  description,email,name,picture } = req.body;
+  const { title,tag, img, date, time,  description,email,name,picture,upvote,downvote } = req.body;
 
   const newBlog = new Blog({
     title:title,
@@ -17,6 +17,8 @@ blogRouter.post("/addblog", (req, res) => {
     email:email,
     name:name,
     picture:picture,
+    upvote:upvote,
+    downvote:downvote,
   });
   
 console.log("adding blog",newBlog)

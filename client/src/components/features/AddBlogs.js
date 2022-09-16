@@ -52,6 +52,8 @@ const AddBlogs = ({
         email:user.email,
         name:user.name,
         picture:user.picture,
+        upvote:0,
+        downvote:0,
            
     });
     const [message, setMessage] = useState(null);
@@ -79,6 +81,8 @@ const AddBlogs = ({
             email:"",
             name:"",
             picture:"",
+            upvote:0,
+            downvote:0,
         });
     };
     const onSubmit = (e) => {

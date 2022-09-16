@@ -46,6 +46,16 @@ const BlogSchema = new mongoose.Schema({
         required:true,
         min:1
     },
+    upvote:{
+        type:Number,
+        reuired:true,
+        min:0
+    },
+    downvote:{
+        type:Number,
+        reuired:true,
+        min:0
+    },
    
    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Blog" }],
 });

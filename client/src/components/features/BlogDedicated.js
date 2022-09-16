@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext,useState} from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -9,9 +9,12 @@ import {
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import StatsIllustrationSrc from "images/stats-illustration.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
-
-
-
+import BlogService from "../../Services/BlogService";
+import Logopdf from "../../images/icons8-financial-64.png";
+import { AuthContext } from "../../Context/AuthContext";
+import Header, {
+  PrimaryLink as PrimaryLinkBase,
+} from "../headers/light.js";
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
@@ -28,7 +31,7 @@ const Image = styled.div((props) => [
   tw`rounded bg-contain bg-no-repeat bg-center h-full rounded sm:rounded-none sm:rounded-tl-2xl sm:rounded-tr-2xl sm:rounded-bl-2xl sm:rounded-br-2xl`,
 ]);
 const TextContent = tw.div` text-primary-800 lg:py-8 text-center md:text-left`;
-
+const PrimaryLink = tw(PrimaryLinkBase)`rounded-full`;
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 const Heading = tw(
   SectionHeading
@@ -64,6 +67,10 @@ export default ({
   textOnLeft = false,
   blog = {},
 }) => {
+  const {
+    user,
+    isAdmin,
+  } = useContext(AuthContext);
   // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
   //Change the statistics variable as you like, add or delete objects
   const defaultStatistics = [
@@ -75,11 +82,24 @@ export default ({
       key: "Time",
       value: "00:00",
     },
-    // {
-    //   key: "Recording Link",
-    //   value: "1000+",
-    // },
   ];
+  const [message, setMessage] = useState(null);
+  const upvoteBlog =(blog,BID)=>{
+    blog.upvote=blog.upvote+1; 
+    BlogService.editBlog(blog,BID).then((data) => {
+      const { message } = data;
+      setMessage(message);
+    });
+    alert("Blog upvoted")
+  }
+  const downvoteBlog =(blog,BID)=>{
+    blog.downvote=blog.downvote+1; 
+    BlogService.editBlog(blog,BID).then((data) => {
+      const { message } = data;
+      setMessage(message);
+    });
+    alert("Blog downvoted")
+  }
 
   if (!statistics) statistics = defaultStatistics;
   const d = async () => {
@@ -123,7 +143,16 @@ export default ({
       ? blog.picture
       : null
     : null;
-
+    const upvotE = (blog ? blog.upvote: 0)
+    ? blog
+      ? blog.upvote
+      : 0
+    : 0;
+    const downvotE = (blog ? blog.downvote: 0)
+    ? blog
+      ? blog.downvote
+      : 0
+    : 0;
 
   console.log(blog);
   return (
@@ -168,7 +197,6 @@ export default ({
             </Statistics>
             <Statistics>
 
-
             </Statistics>
             <Statistics>
             <Statistic key={1}>
@@ -178,7 +206,36 @@ export default ({
                 <Key>Email: {emaiL}</Key>
               </Statistic>
             </Statistics>
-          
+            <Statistics>
+            <Statistic key={1}>
+                <Key>Upvotes: {upvotE}</Key>
+              </Statistic>
+              <Statistic key={2}>
+                <Key>Downvotes: {downvotE}</Key>
+              </Statistic>
+            </Statistics>
+            <Statistics>
+            <Statistic key={1}>
+                <Key>  <button>
+              <PrimaryLink
+                onClick={()=>upvoteBlog(blog,blog._id)}
+              >
+              Upvote
+              </PrimaryLink>
+            </button></Key>
+            
+            
+              </Statistic>
+            <Statistic key={2}>
+            <Key>  <button>
+              <PrimaryLink
+                onClick = {()=>downvoteBlog(blog,blog._id)}
+              >
+               Downvote
+              </PrimaryLink>
+            </button></Key>
+              </Statistic>
+              </Statistics>
           </TextContent>
         </TextColumn>
       </TwoColumn>

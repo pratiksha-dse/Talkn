@@ -77,6 +77,8 @@ const BlogEdit = ({
     email:"",
     name:"",
     picture:"",
+    upvote:0,
+    downvote:0,
  
   });
   const [message, setMessage] = useState(blogOld);
@@ -103,6 +105,8 @@ const BlogEdit = ({
       email:"",
       name:"",
       picture:"",
+      upvote:0,
+      downvote:0,
     
     });
   };
@@ -121,6 +125,8 @@ const BlogEdit = ({
       email:blogOld.email,
       name:blogOld.name,
       picture:blogOld.picture,
+      upvote:blogOld.upvote,
+      downvote:blogOld.downvote,
     };
 
     BlogService.editBlog(newBlog, BID).then((data) => {

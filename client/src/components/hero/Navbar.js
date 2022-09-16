@@ -96,8 +96,6 @@ const Navbar = (props) => {
   const navlinks = () => {
     if (!isAuthenticated) return unauthenticatedNavBar();
     else {
-      // if (isAdmin) return adminNavBar();
-      // else return 
       return authenticatedNavBar();
     }
   };
@@ -115,7 +113,6 @@ const Navbar = (props) => {
     };
   }, []);
   const handleFailure = (result) => {
-    // alert("Login failed. Please try again later.");
     console.log(result);
   };
   const handleLogin = (result) => {

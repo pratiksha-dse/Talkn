@@ -122,13 +122,13 @@ export default () => {
   const onChange2 = (e) => {
     setQuery2(e.target.value);
   };
- 
+
   const {
     user,
   } = useContext(AuthContext);
-// console.log(user.email);
+  // console.log(user.email);
   // const query3= user.email;
-  
+
   const [sliderRef, setSliderRef] = useState(null);
   const sliderSettings = {
     arrows: false,
@@ -153,7 +153,7 @@ export default () => {
 
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
-   BlogService.getBlogs().then((data) => {
+    BlogService.getBlogs().then((data) => {
       setBlogs(data.blogs.reverse());
       console.log(blogs);
     });
@@ -174,14 +174,14 @@ export default () => {
           />
         </Form>
       </FormContainer>
-      
+
     );
   };
- const searchByName= () => {
+  const searchByName = () => {
     return (
       <FormContainer>
         <Form onSubmit={onSubmit}>
-           <Input
+          <Input
             type="search"
             name="searchbyname"
             onChange={onChange2}
@@ -190,10 +190,10 @@ export default () => {
           />
         </Form>
       </FormContainer>
-      
+
     );
   };
-  
+
   return (
     <Container>
       <Content>
@@ -207,69 +207,85 @@ export default () => {
           <DecoratorBlob1 />
           <DecoratorBlob2 />
 
-           {blogs.map((blog, index)=> {
+          {blogs.map((blog, index) => {
             console.log(user.email);
-            if ((query1=="" && query2=="")|| (query1!="" && blog.tag.match(query1)) ||(query2!="" && blog.name.match(query2)) ) {
+            if ((query1 == "" && query2 == "") || (query1 != "" && blog.tag.match(query1)) || (query2 != "" && blog.name.match(query2))) {
               return (
                 <Card key={index}>
-           <CardImage imageSrc={blog.img}/>
-                <TextInfo>
-                  <TitleReviewContainer>
-                    <Title>{blog.title}</Title>
-                  </TitleReviewContainer>
-                  <SecondaryInfoContainer>
-                  <IconWithText>
-                      <img width="25" height="25" border-radius="4px" src={blog.picture} alt="user" css={logocss} />
-                      <Text>{blog.name}</Text>
-                    </IconWithText>
-                  <IconWithText>
+                  <CardImage imageSrc={blog.img} />
+                  <TextInfo>
+                    <TitleReviewContainer>
+                      <Title>{blog.title}</Title>
+                    </TitleReviewContainer>
+                    <SecondaryInfoContainer>
+                      <IconWithText>
+                        <img width="25" height="25" border-radius="4px" src={blog.picture} alt="user" css={logocss} />
+                        <Text>{blog.name}&nbsp; &nbsp;</Text>
+                      </IconWithText>
+                      <IconWithText>
 
-                      <IconContainer>
-                        <TimeIcon />
-                      </IconContainer>
-                      <Text>{blog.email}</Text>
-                    </IconWithText>
-                  
-             </SecondaryInfoContainer>
-            
-                  <SecondaryInfoContainer>
-                    <IconWithText>
-                      <IconContainer>
-                        <DateIcon />
-                      </IconContainer>
-                      <Text>Date: {blog.date}</Text>
-                    </IconWithText>
-                    <IconWithText>
-                      <IconContainer>
-                        <TimeIcon />
-                      </IconContainer>
-                      <Text>Time: {blog.time}</Text>
-                    </IconWithText>
-                  </SecondaryInfoContainer>
-                  <SecondaryInfoContainer>
-                  <IconWithText>
-                      <IconContainer>
-                        <TimeIcon />
-                      </IconContainer>
-                      <Text>Tag: {blog.tag}</Text>
-                    </IconWithText>
-             </SecondaryInfoContainer>
-                  
-                  {/* <Description>{blog.description}</Description> */}
-                </TextInfo>
-                <a href={blog.email===user.email?("#/blog_edit?" + blog._id):("#/blog?"+blog._id)}>
-              {  blog.email===user.email?
-                    (<PrimaryButton>Update Blog Details</PrimaryButton>):
-                    (<PrimaryButton>Blog Details</PrimaryButton>)
-              }
+                        <IconContainer>
+                          <TimeIcon />
+                        </IconContainer>
+                        <Text>{blog.email}</Text>
+                      </IconWithText>
+
+                    </SecondaryInfoContainer>
+
+                    <SecondaryInfoContainer>
+                      <IconWithText>
+                        <IconContainer>
+                          <DateIcon />
+                        </IconContainer>
+                        <Text>Date: {blog.date}</Text>
+                      </IconWithText>
+                      <IconWithText>
+                        <IconContainer>
+                          <TimeIcon />
+                        </IconContainer>
+                        <Text>Time: {blog.time}</Text>
+                      </IconWithText>
+                    </SecondaryInfoContainer>
+
+                    <SecondaryInfoContainer>
+                      <IconWithText>
+                        <IconContainer>
+                          <DateIcon />
+                        </IconContainer>
+                        <Text>Upvotes: {blog.upvote}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </Text>
+                      </IconWithText>
+                      <IconWithText>
+                        <IconContainer>
+                          <TimeIcon />
+                        </IconContainer>
+                        <Text>Downvotes: {blog.downvote}</Text>
+                      </IconWithText>
+                    </SecondaryInfoContainer>
+
+                    <SecondaryInfoContainer>
+                      <IconWithText>
+                        <IconContainer>
+                          <TimeIcon />
+                        </IconContainer>
+                        <Text>Tag: {blog.tag}</Text>
+                      </IconWithText>
+                    </SecondaryInfoContainer>
+
+                    {/* <Description>{blog.description}</Description> */}
+                  </TextInfo>
+                  <a href={blog.email === user.email ? ("#/blog_edit?" + blog._id) : ("#/blog?" + blog._id)}>
+                    {blog.email === user.email ?
+                      (<PrimaryButton>Update Blog Details</PrimaryButton>) :
+                      (<PrimaryButton>Blog Details</PrimaryButton>)
+                    }
                   </a>
-              </Card>
+                </Card>
               );
             } else {
               return <></>;
             }
-           })}
-     
+          })}
+
         </TabContent>
       </Content>
     </Container>
