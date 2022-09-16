@@ -140,12 +140,6 @@ const Navbar = (props) => {
               console.log("user already exist")
             }
         });
-        // UserService.addUser({name:user.name,email:user.email}).then((data) => {
-        //   const { msg } = data;
-        //   setMsg(msg);
-        // });
-   
-        //props.history.push('/todos');
       } else {
         alert(message.msgBody);
         setMessage(message);
