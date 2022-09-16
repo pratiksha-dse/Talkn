@@ -255,7 +255,7 @@ export default () => {
                   <SecondaryInfoContainer>
                   <IconWithText>
                       <IconContainer>
-                        <TimeIcon />
+                      <TimeIcon />
                       </IconContainer>
                       <Text>Topic Tag: {event.tag}</Text>
                     </IconWithText>

@@ -16,7 +16,6 @@ blogRouter.post("/addblog", (req, res) => {
     email:email,
     name:name,
     picture:picture,
-
   });
   
 console.log("adding blog",newBlog)

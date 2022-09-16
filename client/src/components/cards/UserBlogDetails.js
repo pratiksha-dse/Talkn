@@ -212,39 +212,28 @@ export default () => {
             if ((query1=="" && query2=="")|| (query1!="" && blog.tag.match(query1)) ||(query2!="" && blog.name.match(query2)) ) {
               return (
                 <Card key={index}>
-           <CardImage imageSrc={blog.img} />
+           <CardImage imageSrc={blog.img}/>
                 <TextInfo>
                   <TitleReviewContainer>
                     <Title>{blog.tag}</Title>
                   </TitleReviewContainer>
                   <SecondaryInfoContainer>
                   <IconWithText>
-                      <IconContainer>
-                        <TimeIcon />
-                      </IconContainer>
+                      {/* <IconContainer> */}
+                      <img width="25" height="25" border-radius="4px" src={blog.picture} alt="user" css={logocss} />
+                      {/* </IconContainer> */}
                       <Text>{blog.name}</Text>
                     </IconWithText>
                   <IconWithText>
-                      {/* <IconContainer> */}
-                      <img width="25" height="25" border-radius="4px" src={event.picture} alt="user" css={logocss} />
-                      {/* </IconContainer> */}
-                      <img width="25" height="25" border-radius="4px" src={event.picture} alt="user" css={logocss} />
-                    </IconWithText>
-             </SecondaryInfoContainer>
-             <SecondaryInfoContainer>
-                  <IconWithText>
+
                       <IconContainer>
                         <TimeIcon />
                       </IconContainer>
                       <Text>{blog.email}</Text>
                     </IconWithText>
-                  <IconWithText>
-                      <IconContainer>
-                        <TimeIcon />
-                      </IconContainer>
-                      <Text>{blog.tag}</Text>
-                    </IconWithText>
+                  
              </SecondaryInfoContainer>
+            
                   <SecondaryInfoContainer>
                     <IconWithText>
                       <IconContainer>
@@ -259,7 +248,15 @@ export default () => {
                       <Text>{blog.time}</Text>
                     </IconWithText>
                   </SecondaryInfoContainer>
-                  
+                  <SecondaryInfoContainer>
+                 
+                  <IconWithText>
+                      <IconContainer>
+                        <TimeIcon />
+                      </IconContainer>
+                      <Text>{blog.tag}</Text>
+                    </IconWithText>
+             </SecondaryInfoContainer>
                   
                   {/* <Description>{blog.description}</Description> */}
                 </TextInfo>
