@@ -30,7 +30,7 @@ const Column = tw.div`flex flex-col items-center -mt-32`;
 const HeaderContent = tw.div``;
 
 const Form = tw.form`mx-auto max-w-3xl`;
-const Input = tw.input`w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-600 placeholder-gray-600 text-sm focus:outline-none focus:border-gray-500 focus:bg-white mt-5 focus:placeholder-gray-500 first:mt-0`;
+const Input = tw.input`w-full px-20 py-8 rounded-lg font-medium bg-gray-100 border border-gray-600 placeholder-gray-600 text-sm focus:outline-none focus:border-gray-500 focus:bg-white mt-5 focus:placeholder-gray-500 `;
 
 const SubmitButton = styled.button`
   ${tw`mt-5 px-5 tracking-wide font-semibold bg-primary-600 text-gray-100 w-2/6 py-3 rounded-lg hover:bg-primary-900 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none`}
@@ -218,7 +218,7 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
               </HeaderContent>
               <br />
               <br />
-              <br />
+              <br /> 
               <Form onSubmit={onSubmit}>
                 <Input
                   type="text"
@@ -232,7 +232,7 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
                   name="media"
                   value={answer.media}
                   onChange={onChange}
-                  placeholder="File Link"
+                  placeholder="Portfolio Link (If any)"
                 />
 
                 <p align="right">
