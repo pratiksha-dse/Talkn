@@ -17,7 +17,6 @@ import Footer from "components/footers/MiniCenteredFooter.js";
 import { AuthContext } from "../Context/AuthContext";
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
-
 export default () => {
   const {
     user,
@@ -83,11 +82,11 @@ export default () => {
     return (
       <>
         <AnimationRevealPage>
-          <Hero getstarted="#login" />
+          <Hero getstarted="#login" /><br></br>
           <div id="about">
             <MainFeature1
-              subheading={<Subheading></Subheading>}
-              heading="Want to learn together?"
+              subheading={<Subheading><br></br></Subheading>}
+              heading={<>Want to <HighlightedText>learn</HighlightedText> together?</>}
               buttonRounded={false}
               imageSrc={img}
             />
