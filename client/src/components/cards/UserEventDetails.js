@@ -46,6 +46,7 @@ const SubmitButton = styled.button`
     ${tw`ml-3`}
   }
 `;
+const logocss = tw`w-4 h-4`;
 // const HeadingWithControl = tw(SectionHeading)`flex flex-col items-center sm:flex-row place-self-center w-full`;
 const HeaderContent = tw.div``;
 const Subheading = tw(SubheadingBase)`mb-4 text-center`;
@@ -165,7 +166,7 @@ export default () => {
   const onSubmit = (e) => {
     e.preventDefault();
   };
-  const searchByPlace = () => {
+  const searchByTag = () => {
     return (
       <FormContainer>
         <Form onSubmit={onSubmit}>
@@ -174,29 +175,30 @@ export default () => {
             name="search"
             onChange={onChange1}
             value={query1}
-            placeholder="Search by Place"
+            placeholder="Search by Tag"
           />
         </Form>
       </FormContainer>
       
     );
   };
- const searchByStatus = () => {
+ const searchByName= () => {
     return (
       <FormContainer>
         <Form onSubmit={onSubmit}>
-          <Input
+           <Input
             type="search"
-            name="searchbystatus"
+            name="searchbyname"
             onChange={onChange2}
             value={query2}
-            placeholder="Search by Status"
+            placeholder="Search by UserName"
           />
         </Form>
       </FormContainer>
       
     );
   };
+  
   
   return (
     <Container>
@@ -205,54 +207,29 @@ export default () => {
           <Subheading>Talkn</Subheading>
           <Heading>Questions</Heading>
         </HeaderContent>
-        {/* {searchBar()} */}
-        {searchByPlace()}
-        {searchByStatus()}
-        {/* {searchByEmail()} */}
+        {searchByTag()}
+        {searchByName()}
         <TabContent>
           <DecoratorBlob1 />
           <DecoratorBlob2 />
 
            {events.map((event, index)=> {
             console.log(user.email);
-            if ((query1=="" && query2=="")|| (query2!="" && event.title.match(query2)) ||(query1!="" && event.title.match(query1)) ) {
+            if ((query1=="" && query2=="")|| (query2!="" && event.name.match(query2)) ||(query1!="" && event.tag.match(query1)) ) {
               return (
                 <Card key={index}>
            <CardImage imageSrc={event.img} />
                 <TextInfo>
                   <TitleReviewContainer>
-                    <Title>{event.title}</Title>
+                    <Title>{event.description}</Title>
                   </TitleReviewContainer>
-                 
-                  <SecondaryInfoContainer>
-                    <IconWithText>
-                      <IconContainer>
-                        <DateIcon />
-                      </IconContainer>
-                      <Text>{event.date}</Text>
-                    </IconWithText>
-                    <IconWithText>
-                      <IconContainer>
-                        <TimeIcon />
-                      </IconContainer>
-                      <Text>{event.time}</Text>
-                    </IconWithText>
-                  </SecondaryInfoContainer>
                   <SecondaryInfoContainer>
                   <IconWithText>
-                      <IconContainer>
-                        <TimeIcon />
-                      </IconContainer>
-                      <Text>{event.contact}</Text>
+                      {/* <IconContainer> */}
+                      <img width="25" height="25" border-radius="4px" src={event.picture} alt="user" css={logocss} />
+                      {/* </IconContainer> */}
+                      <Text>{event.name}</Text>
                     </IconWithText>
-                  <IconWithText>
-                      <IconContainer>
-                        <DateIcon />
-                      </IconContainer>
-                      <Text>{event.status}</Text>
-                    </IconWithText>
-                  </SecondaryInfoContainer>
-                  <SecondaryInfoContainer>
                   <IconWithText>
                       <IconContainer>
                         <TimeIcon />
@@ -260,6 +237,32 @@ export default () => {
                       <Text>{event.email}</Text>
                     </IconWithText>
              </SecondaryInfoContainer>
+             
+                  <SecondaryInfoContainer>
+                    <IconWithText>
+                      <IconContainer>
+                        <DateIcon />
+                      </IconContainer>
+                      <Text>Date:{event.date}</Text>
+                    </IconWithText>
+                    <IconWithText>
+                      <IconContainer>
+                        <TimeIcon />
+                      </IconContainer>
+                      <Text>Time:{event.time}</Text>
+                    </IconWithText>
+                  </SecondaryInfoContainer>
+                  <SecondaryInfoContainer>
+                  <IconWithText>
+                      <IconContainer>
+                        <TimeIcon />
+                      </IconContainer>
+                      <Text>Topic Tag: {event.tag}</Text>
+                    </IconWithText>
+                 
+             </SecondaryInfoContainer>
+                 
+                  
                   {/* <Description>{event.description}</Description> */}
                 </TextInfo>
                 <a href={event.email===user.email?("#/question_edit?" + event._id):("#/question?"+event._id)}>

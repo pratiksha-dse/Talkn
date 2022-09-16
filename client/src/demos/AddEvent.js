@@ -32,7 +32,7 @@ export default () => {
           <Hero getstarted="#bookaslot" />
         
           <div id="addquestions">
-            <AddEvents email={user.email}/>
+            <AddEvents user={user}/>
           </div>
          
         </AnimationRevealPage>

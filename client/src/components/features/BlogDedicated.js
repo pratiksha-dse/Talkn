@@ -103,24 +103,20 @@ export default ({
       ? blog.time
       : null
     : null;
-  const contacT = (blog? blog.contact : null)
-    ? blog
-      ? blog.contact
-      : null
-    : null;
-  const statuS = (blog ? blog.status : null)
-    ? blog
-      ? blog.status
-      : null
-    : null;
+
   const emaiL = (blog ? blog.email : null)
     ? blog
       ? blog.email
       : null
     : null;
-  const accounT = (blog ? blog.account : null)
+  const namE = (blog ? blog.name : null)
     ? blog
-      ? blog.account
+      ? blog.name
+      : null
+    : null;
+    const picturE = (blog ? blog.picture: null)
+    ? blog
+      ? blog.picture
       : null
     : null;
 
@@ -141,9 +137,9 @@ export default ({
           <TextContent>
             {/* {subheading && <Subheading>{datE}</Subheading>} */}
             <Heading>
-              {(blog ? blog.title : null)
+              {(blog ? blog.tag : null)
                 ? blog
-                  ? blog.title
+                  ? blog.tag
                   : null
                 : heading}
             </Heading>
@@ -166,31 +162,17 @@ export default ({
             </Statistics>
             <Statistics>
 
-              <Statistic key={1}>
-                <Key>Contact: {contacT}</Key>
-              </Statistic>
-              {/* <Statistic key={2}>
-                <Key>Status: {statuS}</Key>
-              </Statistic> */}
 
             </Statistics>
             <Statistics>
-              <Statistic key={1}>
+            <Statistic key={1}>
+                <Key>Name: {namE}</Key>
+              </Statistic>
+              <Statistic key={2}>
                 <Key>Email: {emaiL}</Key>
               </Statistic>
             </Statistics>
-            <Statistics>
-              <Statistic key={1}>
-                <Key>Account Address: {accounT}</Key>
-              </Statistic>
-            </Statistics>
-            <Statistics>
-              <Statistic key={1}>
-                <Key><PrimaryButton as="a" href={"www.google.com"} target="_blank">
-                  {statuS}
-                </PrimaryButton></Key>
-              </Statistic>
-            </Statistics>
+          
           </TextContent>
         </TextColumn>
       </TwoColumn>

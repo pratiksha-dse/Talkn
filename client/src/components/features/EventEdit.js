@@ -65,19 +65,18 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 
 const EventEdit = ({
   SEID = "",
-  eventOld={}
+  eventOld = {}
 }) => {
   const [event, setEvent] = useState({
-    title: "",
+    tag: "",
     img: "",
     date: "",
-    time: "",   
+    time: "",
     description: "",
-    account:"",
-    contact:"",
-    email:"",
-    status:"pending"
- 
+    email: "",
+    name: "",
+    picture: "",
+
   });
   const [message, setMessage] = useState(eventOld);
   let timerID = useRef(eventOld);
@@ -94,16 +93,14 @@ const EventEdit = ({
 
   const resetForm = () => {
     setEvent({
-      title: "",
+      tag: "",
       img: "",
       date: "",
       time: "",
       description: "",
-      contact:"",
-      account:"",
-      email:"",
-      status:"pending",
-    
+      email: "",
+      name: "",
+      picture: "",
     });
   };
 
@@ -112,15 +109,15 @@ const EventEdit = ({
     const tmpEvents = [...events, event];
     console.log(event);
     const newEvent = {
-      title: event.title === "" ? eventOld.title : event.title,
+      tag: event.tag === "" ? eventOld.tag : event.tag,
       img: event.img === "" ? eventOld.img : event.img,
-      date: event.date === "" ? eventOld.date : event.date,
-      time: event.time === "" ? eventOld.time : event.time,
+      date: eventOld.date,
+      time: eventOld.time,
       description: event.description === "" ? eventOld.description : event.description,
-      contact:event.contact===""? eventOld.contact:event.contact,
-      account:event.account===""? eventOld.account:event.account,
-      email:event.email===""? eventOld.email:event.email,
-      status:event.status===""?eventOld.status:event.status,
+      email: eventOld.email,
+      name: eventOld.name,
+      picture: eventOld.picture,
+
     };
 
     EventService.editEvent(newEvent, SEID).then((data) => {
@@ -165,10 +162,10 @@ const EventEdit = ({
         <Column>
           <HeaderContent>
             {/* <Subheading>ClubNation</Subheading> */}
-            <Heading>Update Incident</Heading>
+            <Heading>Update Question</Heading>
             <p align="center">
               <Description>
-                Update title, date, time, Contact, description, Mail Id or Account Address for transactions 
+                Update tag, image and question details.
               </Description>
             </p>
           </HeaderContent>
@@ -178,8 +175,8 @@ const EventEdit = ({
           <Form onSubmit={onSubmit}>
             <Input
               type="text"
-              name="title"
-              value={event.title}
+              name="tag"
+              value={event.tag}
               onChange={onChange}
               placeholder="Place"
             />
@@ -192,47 +189,12 @@ const EventEdit = ({
             />
             <Input
               type="text"
-              name="date"
-              value={event.date}
-              onChange={onChange}
-              placeholder="Date"
-            />{" "}
-            <Input
-              type="text"
-              name="time"
-              value={event.time}
-              onChange={onChange}
-              placeholder="Time"
-            />{" "}
-              <Input
-              type="text"
-              name="contact"
-              value={event.contact}
-              onChange={onChange}
-              placeholder="Contact No"
-            />
-             <Input
-              type="text"
-              name="email"
-              value={event.email}
-              onChange={onChange}
-              placeholder="Email"
-            />
-              <Input
-              type="text"
-              name="account"
-              value={event.account}
-              onChange={onChange}
-              placeholder="Account Address"
-            />
-            <Input
-              type="text"
               name="description"
               value={event.description}
               onChange={onChange}
-              placeholder="Description of seen Incident"
+              placeholder="Question Description"
             />
-             
+
             <p align="right">
               <SubmitButton type="submit">
                 <SignUpIcon className="icon" />

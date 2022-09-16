@@ -37,17 +37,20 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 `;
 
 const AddBlogs = ({
-    email="",
+    user={},
 }) => {
+    let currentDate = new Date();
+    let date=currentDate.getDate()+ "/" +(currentDate.getMonth() + 1) + "/" + currentDate.getFullYear();
+    let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     const [blog, setBlog] = useState({
-        title: "",
+        tag: "",
         img:"",
-        date: "",
-        time: "",
+        date: date,
+        time: time,
         description: "",
-        contact:"",
-        email:email,
-        account:"",
+        email:user.email,
+        name:user.name,
+        picture:user.picture,
            
     });
     const [message, setMessage] = useState(null);
@@ -66,20 +69,20 @@ const AddBlogs = ({
 
     const resetForm = () => {
         setBlog({
-            title: "",
+            tag: "",
             img: "",
             date: "",
             time: "",
             description: "",
-            contact:"",
-            email:email,
-            account:"",
+            email:"",
+            name:"",
+            picture:"",
         });
     };
     const onSubmit = (e) => {
         e.preventDefault();
         var blog1=blog;
-        blog1.email=email;
+        blog1.email=user.email;
         console.log("adding1",blog1)
         BlogService.postBlog(blog1).then((data) => {
             const { message } = data;
@@ -100,7 +103,7 @@ const AddBlogs = ({
                         <Heading>Add Blog</Heading>
                         <p align="center">
                             <Description>
-                                Add title and description of your blog</Description> 
+                                Add tag and description of your blog</Description> 
                         </p>
                     </HeaderContent>
                     <br />
@@ -109,10 +112,10 @@ const AddBlogs = ({
                     <Form onSubmit={onSubmit}>
                         <Input
                             type="text"
-                            name="title"
-                            value={blog.title}
+                            name="tag"
+                            value={blog.tag}
                             onChange={onChange}
-                            placeholder="Title"
+                            placeholder="Tag realted to Blog"
                         />
                         <Input
                             type="url"
@@ -120,34 +123,6 @@ const AddBlogs = ({
                             value={blog.img}
                             onChange={onChange}
                             placeholder="Image Link"
-                        />
-                        <Input
-                            type="text"
-                            name="date"
-                            value={blog.date}
-                            onChange={onChange}
-                            placeholder="Date"
-                        />  <Input
-                            type="text"
-                            name="time"
-                            value={blog.time}
-                            onChange={onChange}
-                            placeholder="Time"
-                        /> 
-                        <Input
-                            type="text"
-                            name="contact"
-                            value={blog.contact}
-                            onChange={onChange}
-                            placeholder="Contact No"
-                        />
-                           
-                        <Input
-                            type="text"
-                            name="account"
-                            value={blog.account}
-                            onChange={onChange}
-                            placeholder="Account Address"
                         />
                         <Input
                             type="text"

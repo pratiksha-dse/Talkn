@@ -5,18 +5,17 @@ const Blog = require("../models/Blog");
 
 blogRouter.post("/addblog", (req, res) => {
   console.log("doing2");
-  const { title, img, date, time,  description,contact,email,account } = req.body;
+  const { tag, img, date, time,  description,email,name,picture } = req.body;
 
   const newBlog = new Blog({
-    title:title,
+    tag:tag,
     img:img,
     date:date,
     time:time,
     description:description,
-    contact:contact,
     email:email,
-    account:account,
-    status:"pending"
+    name:name,
+    picture:picture,
 
   });
   

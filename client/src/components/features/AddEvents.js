@@ -37,17 +37,20 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 `;
 
 const AddEvents = ({
-    email="",
+    user={},
 }) => {
+    let currentDate = new Date();
+    let date=currentDate.getDate()+ "/" +(currentDate.getMonth() + 1) + "/" + currentDate.getFullYear();
+    let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     const [event, setEvent] = useState({
-        title: "",
+        tag: "",
         img:"",
-        date: "",
-        time: "",
+        date: date,
+        time: time,
         description: "",
-        contact:"",
-        email:email,
-        account:"",
+        email:user.email,
+        name:user.name,
+        picture:user.picture,
            
     });
     const [message, setMessage] = useState(null);
@@ -66,20 +69,20 @@ const AddEvents = ({
 
     const resetForm = () => {
         setEvent({
-            title: "",
+            tag: "",
             img: "",
             date: "",
             time: "",
             description: "",
-            contact:"",
-            email:email,
-            account:"",
+            email:"",
+            name:"",
+            picture:"",
         });
     };
     const onSubmit = (e) => {
         e.preventDefault();
         var event1=event;
-        event1.email=email;
+        event1.email=user.email;
         console.log("adding1",event1)
         EventService.postEvent(event1).then((data) => {
             const { message } = data;
@@ -100,7 +103,7 @@ const AddEvents = ({
                         <Heading>Add Question</Heading>
                         <p align="center">
                             <Description>
-                                Add place, date, time, description of seen Incident</Description> 
+                                Add tag , image and your question.</Description> 
                         </p>
                     </HeaderContent>
                     <br />
@@ -109,10 +112,10 @@ const AddEvents = ({
                     <Form onSubmit={onSubmit}>
                         <Input
                             type="text"
-                            name="title"
-                            value={event.title}
+                            name="tag"
+                            value={event.tag}
                             onChange={onChange}
-                            placeholder="Place"
+                            placeholder="Tag related to Question"
                         />
                         <Input
                             type="url"
@@ -123,38 +126,10 @@ const AddEvents = ({
                         />
                         <Input
                             type="text"
-                            name="date"
-                            value={event.date}
-                            onChange={onChange}
-                            placeholder="Date"
-                        />  <Input
-                            type="text"
-                            name="time"
-                            value={event.time}
-                            onChange={onChange}
-                            placeholder="Time"
-                        /> 
-                        <Input
-                            type="text"
-                            name="contact"
-                            value={event.contact}
-                            onChange={onChange}
-                            placeholder="Contact No"
-                        />
-                           
-                        <Input
-                            type="text"
-                            name="account"
-                            value={event.account}
-                            onChange={onChange}
-                            placeholder="Account Address"
-                        />
-                        <Input
-                            type="text"
                             name="description"
                             value={event.description}
                             onChange={onChange}
-                            placeholder="Description of seen Incident"
+                            placeholder="Question"
                         />
             
                         <p align="right">

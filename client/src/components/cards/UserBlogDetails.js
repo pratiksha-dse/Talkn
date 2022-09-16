@@ -69,6 +69,7 @@ const ControlButton = styled(PrimaryButtonBase)`
 //     ${tw`h-auto flex justify-center mb-1`}
 //   }
 // `;
+const logocss = tw`w-8 h-8`;
 const Card = tw.div`border border-gray-400 rounded-tl-2xl rounded-br-2xl rounded-tr-2xl rounded-bl-2xl focus:outline-none mx-8 my-8 bg-gray-100`;
 
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
@@ -160,7 +161,7 @@ export default () => {
   const onSubmit = (e) => {
     e.preventDefault();
   };
-  const searchByPlace = () => {
+  const searchByTag = () => {
     return (
       <FormContainer>
         <Form onSubmit={onSubmit}>
@@ -169,23 +170,23 @@ export default () => {
             name="search"
             onChange={onChange1}
             value={query1}
-            placeholder="Search by Title"
+            placeholder="Search by Tag"
           />
         </Form>
       </FormContainer>
       
     );
   };
- const searchByStatus = () => {
+ const searchByName= () => {
     return (
       <FormContainer>
         <Form onSubmit={onSubmit}>
-          <Input
+           <Input
             type="search"
-            name="searchbystatus"
+            name="searchbyname"
             onChange={onChange2}
             value={query2}
-            placeholder="Search by Status"
+            placeholder="Search by User Name"
           />
         </Form>
       </FormContainer>
@@ -200,25 +201,50 @@ export default () => {
           <Subheading>Talkn</Subheading>
           <Heading>Blogs</Heading>
         </HeaderContent>
-        {/* {searchBar()} */}
-        {searchByPlace()}
-        {searchByStatus()}
-        {/* {searchByEmail()} */}
+        {searchByTag()}
+        {searchByName()}
         <TabContent>
           <DecoratorBlob1 />
           <DecoratorBlob2 />
 
            {blogs.map((blog, index)=> {
             console.log(user.email);
-            if ((query1=="" && query2=="")|| (query2!="" && blog.title.match(query2)) ||(query1!="" && blog.title.match(query1)) ) {
+            if ((query1=="" && query2=="")|| (query1!="" && blog.tag.match(query1)) ||(query2!="" && blog.name.match(query2)) ) {
               return (
                 <Card key={index}>
            <CardImage imageSrc={blog.img} />
                 <TextInfo>
                   <TitleReviewContainer>
-                    <Title>{blog.title}</Title>
+                    <Title>{blog.tag}</Title>
                   </TitleReviewContainer>
-                 
+                  <SecondaryInfoContainer>
+                  <IconWithText>
+                      <IconContainer>
+                        <TimeIcon />
+                      </IconContainer>
+                      <Text>{blog.name}</Text>
+                    </IconWithText>
+                  <IconWithText>
+                      {/* <IconContainer> */}
+                      <img width="25" height="25" border-radius="4px" src={event.picture} alt="user" css={logocss} />
+                      {/* </IconContainer> */}
+                      <img width="25" height="25" border-radius="4px" src={event.picture} alt="user" css={logocss} />
+                    </IconWithText>
+             </SecondaryInfoContainer>
+             <SecondaryInfoContainer>
+                  <IconWithText>
+                      <IconContainer>
+                        <TimeIcon />
+                      </IconContainer>
+                      <Text>{blog.email}</Text>
+                    </IconWithText>
+                  <IconWithText>
+                      <IconContainer>
+                        <TimeIcon />
+                      </IconContainer>
+                      <Text>{blog.tag}</Text>
+                    </IconWithText>
+             </SecondaryInfoContainer>
                   <SecondaryInfoContainer>
                     <IconWithText>
                       <IconContainer>
@@ -233,28 +259,8 @@ export default () => {
                       <Text>{blog.time}</Text>
                     </IconWithText>
                   </SecondaryInfoContainer>
-                  <SecondaryInfoContainer>
-                  <IconWithText>
-                      <IconContainer>
-                        <TimeIcon />
-                      </IconContainer>
-                      <Text>{blog.contact}</Text>
-                    </IconWithText>
-                  <IconWithText>
-                      <IconContainer>
-                        <DateIcon />
-                      </IconContainer>
-                      <Text>{blog.status}</Text>
-                    </IconWithText>
-                  </SecondaryInfoContainer>
-                  <SecondaryInfoContainer>
-                  <IconWithText>
-                      <IconContainer>
-                        <TimeIcon />
-                      </IconContainer>
-                      <Text>{blog.email}</Text>
-                    </IconWithText>
-             </SecondaryInfoContainer>
+                  
+                  
                   {/* <Description>{blog.description}</Description> */}
                 </TextInfo>
                 <a href={blog.email===user.email?("#/blog_edit?" + blog._id):("#/blog?"+blog._id)}>

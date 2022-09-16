@@ -68,15 +68,14 @@ const BlogEdit = ({
   blogOld={}
 }) => {
   const [blog, setBlog] = useState({
-    title: "",
+    tag: "",
     img: "",
     date: "",
     time: "",   
     description: "",
-    account:"",
-    contact:"",
     email:"",
-    status:"pending"
+    name:"",
+    picture:"",
  
   });
   const [message, setMessage] = useState(blogOld);
@@ -94,15 +93,14 @@ const BlogEdit = ({
 
   const resetForm = () => {
     setBlog({
-      title: "",
+      tag: "",
       img: "",
       date: "",
       time: "",
       description: "",
-      contact:"",
-      account:"",
       email:"",
-      status:"pending",
+      name:"",
+      picture:"",
     
     });
   };
@@ -112,15 +110,14 @@ const BlogEdit = ({
     const tmpBlogs = [...blogs, blog];
     console.log(blog);
     const newBlog = {
-      title: blog.title === "" ? blogOld.title : blog.title,
+      tag: blog.tag === "" ? blogOld.tag : blog.tag,
       img: blog.img === "" ? blogOld.img : blog.img,
-      date: blog.date === "" ? blogOld.date : blog.date,
-      time: blog.time === "" ? blogOld.time : blog.time,
+      date:blogOld.date,
+      time:blogOld.time ,
       description: blog.description === "" ? blogOld.description : blog.description,
-      contact:blog.contact===""? blogOld.contact:blog.contact,
-      account:blog.account===""? blogOld.account:blog.account,
-      email:blog.email===""? blogOld.email:blog.email,
-      status:blog.status===""?blogOld.status:blog.status,
+      email:blogOld.email,
+      name:blogOld.name,
+      picture:blogOld.picture,
     };
 
     BlogService.editBlog(newBlog, BID).then((data) => {
@@ -168,7 +165,7 @@ const BlogEdit = ({
             <Heading>Update Blog</Heading>
             <p align="center">
               <Description>
-                Update title, Contact, description, Mail Id of the blog.
+                Update tag, description of the blog.
               </Description>
             </p>
           </HeaderContent>
@@ -178,10 +175,10 @@ const BlogEdit = ({
           <Form onSubmit={onSubmit}>
             <Input
               type="text"
-              name="title"
-              value={blog.title}
+              name="tag"
+              value={blog.tag}
               onChange={onChange}
-              placeholder="Place"
+              placeholder="Tag"
             />
             <Input
               type="url"
@@ -190,47 +187,13 @@ const BlogEdit = ({
               onChange={onChange}
               placeholder="Image Link"
             />
-            <Input
-              type="text"
-              name="date"
-              value={blog.date}
-              onChange={onChange}
-              placeholder="Date"
-            />{" "}
-            <Input
-              type="text"
-              name="time"
-              value={blog.time}
-              onChange={onChange}
-              placeholder="Time"
-            />{" "}
-              <Input
-              type="text"
-              name="contact"
-              value={blog.contact}
-              onChange={onChange}
-              placeholder="Contact No"
-            />
-             <Input
-              type="text"
-              name="email"
-              value={blog.email}
-              onChange={onChange}
-              placeholder="Email"
-            />
-              <Input
-              type="text"
-              name="account"
-              value={blog.account}
-              onChange={onChange}
-              placeholder="Account Address"
-            />
+            
             <Input
               type="text"
               name="description"
               value={blog.description}
               onChange={onChange}
-              placeholder="Description of seen Incident"
+              placeholder="Your Blog"
             />
              
             <p align="right">

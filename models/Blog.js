@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const EventSchema = new mongoose.Schema({
-    title: {
+const BlogSchema = new mongoose.Schema({
+    tag: {
         type: String,
         required: true,
         min: 1,
@@ -26,24 +26,23 @@ const EventSchema = new mongoose.Schema({
         required: true,
         min: 1
     },
-    contact:{
-        type: String,
-        required:true,
-        min:1
-    },
     email:{
         type: String,
         required:true,
         min:1
     },
-    status:{
+    name:{
         type:String,
         required:true,
-        min:1,
+        min:1
     },
- 
+    picture:{
+        type:String,
+        required:true,
+        min:1
+    },
    
    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Blog" }],
 });
 
-module.exports = mongoose.model('Blog', EventSchema);
+module.exports = mongoose.model('Blog', BlogSchema);

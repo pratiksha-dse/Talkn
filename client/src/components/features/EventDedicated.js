@@ -75,10 +75,6 @@ export default ({
       key: "Time",
       value: "00:00",
     },
-    // {
-    //   key: "Recording Link",
-    //   value: "1000+",
-    // },
   ];
 
   if (!statistics) statistics = defaultStatistics;
@@ -103,24 +99,19 @@ export default ({
       ? event.time
       : null
     : null;
-  const contacT = (event ? event.contact : null)
-    ? event
-      ? event.contact
-      : null
-    : null;
-  const statuS = (event ? event.status : null)
-    ? event
-      ? event.status
-      : null
-    : null;
   const emaiL = (event ? event.email : null)
     ? event
       ? event.email
       : null
     : null;
-  const accounT = (event ? event.account : null)
+  const namE = (event ? event.name : null)
     ? event
-      ? event.account
+      ? event.name
+      : null
+    : null;
+  const picturE = (event ? event.picture : null)
+    ? event
+      ? event.picture
       : null
     : null;
 
@@ -141,13 +132,13 @@ export default ({
           <TextContent>
             {/* {subheading && <Subheading>{datE}</Subheading>} */}
             <Heading>
-              {(event ? event.title : null)
+              {(event ? event.tag: null)
                 ? event
-                  ? event.title
+                  ? event.tag
                   : null
                 : heading}
             </Heading>
-            
+
             <Description>
               {" "}
               {(event ? event.description : null)
@@ -166,29 +157,14 @@ export default ({
             </Statistics>
             <Statistics>
 
-              <Statistic key={1}>
-                <Key>Contact: {contacT}</Key>
-              </Statistic>
-              {/* <Statistic key={2}>
-                <Key>Status: {statuS}</Key>
-              </Statistic> */}
 
             </Statistics>
             <Statistics>
               <Statistic key={1}>
+                <Key>Name: {namE}</Key>
+              </Statistic>
+              <Statistic key={2}>
                 <Key>Email: {emaiL}</Key>
-              </Statistic>
-            </Statistics>
-            <Statistics>
-              <Statistic key={1}>
-                <Key>Account Address: {accounT}</Key>
-              </Statistic>
-            </Statistics>
-            <Statistics>
-              <Statistic key={1}>
-                <Key><PrimaryButton as="a" href={"www.google.com"} target="_blank">
-                  {statuS}
-                </PrimaryButton></Key>
               </Statistic>
             </Statistics>
           </TextContent>
