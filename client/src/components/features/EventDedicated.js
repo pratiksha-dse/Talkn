@@ -114,7 +114,11 @@ export default ({
       ? event.picture
       : null
     : null;
-
+    const taG = (event? event.tag : null)
+    ? event
+      ? event.tag
+      : null
+    : null;
 
   console.log(event);
   return (
@@ -132,20 +136,15 @@ export default ({
           <TextContent>
             {/* {subheading && <Subheading>{datE}</Subheading>} */}
             <Heading>
-              {(event ? event.tag: null)
+              {(event ? event.description: null)
                 ? event
-                  ? event.tag
+                  ? event.description
                   : null
                 : heading}
             </Heading>
 
             <Description>
-              {" "}
-              {(event ? event.description : null)
-                ? event
-                  ? event.description
-                  : null
-                : description}
+              Tag: {taG}
             </Description>
             <Statistics>
               <Statistic key={1}>

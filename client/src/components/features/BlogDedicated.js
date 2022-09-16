@@ -92,7 +92,11 @@ export default ({
       : null
     : imageSrc;
 
-
+    const taG = (blog ? blog.tag : null)
+    ? blog
+      ? blog.tag
+      : null
+    : null;
   const datE = (blog ? blog.date : null)
     ? blog
       ? blog.date
@@ -137,21 +141,16 @@ export default ({
           <TextContent>
             {/* {subheading && <Subheading>{datE}</Subheading>} */}
             <Heading>
-              {(blog ? blog.tag : null)
-                ? blog
-                  ? blog.tag
-                  : null
-                : heading}
-            </Heading>
-            
-            <Description>
-              {" "}
               {(blog ? blog.description : null)
                 ? blog
                   ? blog.description
                   : null
-                : description}
+                : heading}
+            </Heading>
+            <Description>
+                Tag: {taG}
             </Description>
+            
             <Statistics>
               <Statistic key={1}>
                 <Key>Date: {datE}</Key>
