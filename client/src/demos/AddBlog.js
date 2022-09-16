@@ -2,8 +2,7 @@ import React, { useContext, useEffect } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/BackgroundAsImageWithCenteredContent.js";
 
-import AddEvents from "components/features/AddEvents.js";
-import EventDetails from "components/cards/EventDetails.js";
+import AddBlogs from "components/features/AddBlogs.js";
 
 import tw from "twin.macro";
 // import Features from "components/features/VerticalWithAlternateImageAndText.js";
@@ -31,8 +30,8 @@ export default () => {
         <AnimationRevealPage>
           <Hero getstarted="#bookaslot" />
         
-          <div id="addquestions">
-            <AddEvents email={user.email}/>
+          <div id="addblogs">
+            <AddBlogs email={user.email}/>
           </div>
          
         </AnimationRevealPage>

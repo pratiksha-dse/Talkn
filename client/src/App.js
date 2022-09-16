@@ -9,9 +9,13 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import EventView from "demos/EventView";
 import Event from "demos/Event";
-import AdminEvent from "demos/AdminEvent";
-import EventEdit from "demos/EventEdit";
 import AddEvent from "demos/AddEvent";
+import EventEdit from "demos/EventEdit";
+import BlogView from "demos/BlogView";
+import Blog from "demos/Blog";
+// import AdminEvent from "demos/AdminEvent";
+import BlogEdit from "demos/BlogEdit";
+import AddBlog from "demos/AddBlog";
 // import YourEvents from "demos/YourEvents";
 
 
@@ -27,9 +31,14 @@ export default function App() {
         <UserRoute path="/question" component={EventView} />
         <UserRoute path="/addquestions" component={AddEvent} />
         {/* <UserRoute path="/your_incidents" component={YourEvents} /> */}
+        
+        <UserRoute exact path="/blogs" component={Blog} />
+        <UserRoute path="/blog_edit" component={BlogEdit} />
+        <UserRoute path="/blog" component={BlogView} />
+        <UserRoute path="/addblogs" component={AddBlog} />
 
-        <AdminRoute exact path="/admin_incidents" component={AdminEvent} />
-        <AdminRoute path="/admin_incident" component={EventView} />
+        {/* <AdminRoute exact path="/admin_incidents" component={AdminEvent} />
+        <AdminRoute path="/admin_incident" component={EventView} /> */}
         <Route path="/">
           <Home />
         </Route>

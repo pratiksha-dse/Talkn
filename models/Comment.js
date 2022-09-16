@@ -5,7 +5,12 @@ const CommentSchema = new mongoose.Schema({
         required : true,
         min : 1
     },
-    AID :{
+    media :{
+        type : String,
+        required : true,
+        min : 5
+    },
+    BID :{
         type : String,
         required : true,
         min : 1

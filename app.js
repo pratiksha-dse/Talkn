@@ -18,8 +18,15 @@ app.use('/user',userRouter);
 const answerRouter = require('./routes/Answer');
 app.use('/answer',answerRouter);
 
+const commentRouter = require('./routes/Comment');
+app.use('/comment',commentRouter);
+
 const eventRouter = require('./routes/Event');
 app.use('/event',eventRouter);
+
+const blogRouter = require('./routes/Blog');
+app.use('/blog',blogRouter);
+
 const contactRouter = require('./routes/Contact');
 app.use('/con',contactRouter);
 

@@ -31,13 +31,13 @@ export default () => {
     if (isAdmin) {
       return (
         <>
-          <AnimationRevealPage>
+          {/* <AnimationRevealPage> */}
             <Hero getstarted="#bookaslot" />
             <div id="admin_incidents">
               <EventDetails />
             </div>
 
-          </AnimationRevealPage>
+          {/* </AnimationRevealPage> */}
           <Footer />
         </>
       );
@@ -50,7 +50,6 @@ export default () => {
             <div id="questions">
               <UserEventDetails />
             </div>
-
           </AnimationRevealPage>
           <Footer />
         </>

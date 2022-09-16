@@ -47,9 +47,7 @@ export default (props) => {
       <>
         <AnimationRevealPage>
           <Hero getstarted="#bookaslot" />
-          {/* <div id="event">
-            <SessionDetails />
-          </div> */}    <div id="eventdedicated">
+          <div id="eventdedicated">
             <EventDedicated event={event} />
           </div>
           <div id="addanswers">

@@ -78,6 +78,8 @@ const Navbar = (props) => {
       <>  <NavLink href="#about">Home</NavLink>
       <NavLink href="#questions">Questions</NavLink>
       <NavLink href="#addquestions">Add Question</NavLink>
+      <NavLink href="#blogs">Blogs</NavLink>
+      <NavLink href="#addblogs">Add Blog</NavLink>
       <NavLink href="#letstalk">Contact Us</NavLink>
       </>
     );

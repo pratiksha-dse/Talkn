@@ -1,21 +1,24 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/BackgroundAsImageWithCenteredContent.js";
 
-import AddEvents from "components/features/AddEvents.js";
-import EventDetails from "components/cards/EventDetails.js";
+import AddComments from "components/features/AddComment.js";
+
+import BlogService from "../Services/BlogService";
 
 import tw from "twin.macro";
+import MainFeature1 from "components/features/TwoColWithButton.js";
 // import Features from "components/features/VerticalWithAlternateImageAndText.js";
 // import Blog from "components/blogs/ThreeColSimpleWithImage.js";
 // import Testimonial from "components/testimonials/TwoColumnWithImage.js";
 // import ContactUsForm from "components/forms/SimpleContactUs.js";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import { AuthContext } from "../Context/AuthContext";
+import BlogDedicated from "components/features/BlogDedicated";
 
 const Subheading = tw.span`uppercase tracking-wider text-sm`;
 
-export default () => {
+export default (props) => {
   const {
     user,
     setUser,
@@ -24,15 +27,28 @@ export default () => {
     isAdmin,
     setIsAdmin,
   } = useContext(AuthContext);
+  const blogID = props.location.search.slice(1);
+  const [blog, setBlog] = useState(null);
+  useEffect(() => {
+    BlogService.getBlogByID(blogID).then((data) => {
+      setBlog(data.blog);
+      console.log(blog);
+    });
+  }, []);
 
-  const userLP = () => {
+  console.log(blogID);
+  console.log(blog);
+  const authLP = () => {
     return (
       <>
         <AnimationRevealPage>
           <Hero getstarted="#bookaslot" />
         
-          <div id="addquestions">
-            <AddEvents email={user.email}/>
+          <div id="blogdedicated">
+            <BlogDedicated blog={blog} BID={blogID}/>
+          </div>
+          <div id="addanswers">
+            <AddComments BID={blogID} email={user.email}/>
           </div>
          
         </AnimationRevealPage>
@@ -41,7 +57,7 @@ export default () => {
     );
   };
   const page = () => {
-    if (isAuthenticated && !isAdmin) return userLP();
+    if (isAuthenticated && !isAdmin) return authLP();
   };
   return <>{page()}</>;
 };

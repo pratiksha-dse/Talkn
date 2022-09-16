@@ -50,7 +50,6 @@ export default (props) => {
           <div id="addanswers">
             <AddAnswers SEID={eventID} email={user.email}/>
           </div>
-         
         </AnimationRevealPage>
         <Footer />
       </>
