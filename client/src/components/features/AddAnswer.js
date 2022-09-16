@@ -150,6 +150,7 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     }
     return arr;
   }
+
   const deleteAnswer = (answer) => {
     const tmpAnswers = [...answers];
     AnswerService.delAnswer(answer).then((data) => {
@@ -166,21 +167,29 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     });
     setAnswers(removeItemOnce(tmpAnswers, answer));
   }
-  const upvoteAnswer =(answer,AID)=>{
-    answer.upvote=answer.upvote+1;
+  const upvoteAnswer =(answer,AID,index)=>{
+    const tmpAnswers = [...answers];
+    var answers1=removeItemOnce(tmpAnswers, answer)
+    answer.upvote=answer.upvote+1; 
+    answers1.splice(index,0,answer)
+    setAnswers(answers1);
     AnswerService.editAnswer(answer,AID).then((data) => {
       const { message } = data;
       setMessage(message);
     });
     alert("Answer upvoted")
   }
-  const downvoteAnswer =(answer,AID)=>{
+  const downvoteAnswer =(answer,AID,index)=>{
+    const tmpAnswers = [...answers];
+    var answers1=removeItemOnce(tmpAnswers, answer)
     answer.downvote=answer.downvote+1;
+    answers1.splice(index,0,answer)
+    setAnswers(answers1);
     AnswerService.editAnswer(answer,AID).then((data) => {
       const { message } = data;
       setMessage(message);
     });
-    alert("Answer downvoted")
+    alert("Answer downvoted");
   }
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
@@ -318,14 +327,14 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
                        <NewPrimaryButton
                         as="c"
                         ref={inputRef}
-                        onClick={() => upvoteAnswer(answer,answer._id)}
+                        onClick={() => upvoteAnswer(answer,answer._id,index)}
                       >
                         {(primaryButtonText = "Upvote")}
                       </NewPrimaryButton> &nbsp;&nbsp;
                       <NewPrimaryButton
                         as="d"
                         ref={inputRef}
-                        onClick={() => downvoteAnswer(answer,answer._id)}
+                        onClick={() => downvoteAnswer(answer,answer._id,index)}
                       >
                         {(primaryButtonText = "Downvote")}
                       </NewPrimaryButton>

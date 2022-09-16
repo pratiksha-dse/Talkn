@@ -1,16 +1,11 @@
 const mongoose = require('mongoose');
-const AnswerSchema = new mongoose.Schema({
-    answer :{
+const CommentSchema = new mongoose.Schema({
+    comment:{
         type : String,
         required : true,
         min : 1
     },
-    media :{
-        type : String,
-        required : true,
-        min : 5
-    },
-    SEID :{
+    AID :{
         type : String,
         required : true,
         min : 1
@@ -50,7 +45,6 @@ const AnswerSchema = new mongoose.Schema({
         required:true,
         min:0
     },
-    // comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Answer" }],
 });
 
-module.exports = mongoose.model('Answer', AnswerSchema);
+module.exports = mongoose.model('Comment', CommentSchema);
