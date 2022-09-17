@@ -122,7 +122,10 @@ export default () => {
   const onChange2 = (e) => {
     setQuery2(e.target.value);
   };
-
+  const [query3, setQuery3] = useState("");
+  const onChange3 = (e) => {
+    setQuery2(e.target.value);
+  };
   const {
     user,
   } = useContext(AuthContext);
@@ -193,6 +196,22 @@ export default () => {
 
     );
   };
+  const searchByEmail = () => {
+    return (
+      <FormContainer>
+        <Form onSubmit={onSubmit}>
+          <Input
+            type="search"
+            name="searchbyemail"
+            onChange={onChange3}
+            value={query3}
+            placeholder="Search by User Email"
+          />
+        </Form>
+      </FormContainer>
+
+    );
+  };
 
   return (
     <Container>
@@ -203,13 +222,14 @@ export default () => {
         </HeaderContent>
         {searchByTag()}
         {searchByName()}
+        {searchByEmail()}
         <TabContent>
           <DecoratorBlob1 />
           <DecoratorBlob2 />
 
           {blogs.map((blog, index) => {
             console.log(user.email);
-            if ((query1 == "" && query2 == "") || (query1 != "" && blog.tag.match(query1)) || (query2 != "" && blog.name.match(query2))) {
+            if ((query1 == "" && query2 == "" && query3== "") || (query1 != "" && blog.tag.match(query1)) || (query2 != "" && blog.name.match(query2)) || (query3!="" && blog.email.match(query3))) {
               return (
                 <Card key={index}>
                   <CardImage imageSrc={blog.img} />

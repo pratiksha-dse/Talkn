@@ -122,7 +122,10 @@ export default () => {
   const onChange2 = (e) => {
     setQuery2(e.target.value);
   };
- 
+  const [query3, setQuery3] = useState("");
+  const onChange3 = (e) => {
+    setQuery2(e.target.value);
+  };
   const {
     user,
     setUser,
@@ -198,7 +201,23 @@ export default () => {
       
     );
   };
-  
+  const searchByEmail = () => {
+    return (
+      <FormContainer>
+        <Form onSubmit={onSubmit}>
+          <Input
+            type="search"
+            name="searchbyemail"
+            onChange={onChange3}
+            value={query3}
+            placeholder="Search by User Email"
+          />
+        </Form>
+      </FormContainer>
+
+    );
+  };
+
   
   return (
     <Container>
@@ -209,13 +228,14 @@ export default () => {
         </HeaderContent>
         {searchByTag()}
         {searchByName()}
+        {searchByEmail()}
         <TabContent>
           <DecoratorBlob1 />
           <DecoratorBlob2 />
 
            {events.map((event, index)=> {
             console.log(user.email);
-            if ((query1=="" && query2=="")|| (query2!="" && event.name.match(query2)) ||(query1!="" && event.tag.match(query1)) ) {
+              if ((query1 == "" && query2 == "" && query3== "") || (query1 != "" && event.tag.match(query1)) || (query2 != "" && event.name.match(query2)) || (query3!="" && event.email.match(query3))) {
               return (
                 <Card key={index}>
            <CardImage imageSrc={event.img} />

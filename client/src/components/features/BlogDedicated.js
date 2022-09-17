@@ -189,7 +189,7 @@ export default ({
             
             <Statistics>
               <Statistic key={1}>
-                <Key>Date: {datE}</Key>
+                <Key>Date: {datE}&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</Key>
               </Statistic>
               <Statistic key={2}>
                 <Key>Time: {timE}</Key>
@@ -208,7 +208,7 @@ export default ({
             </Statistics>
             <Statistics>
             <Statistic key={1}>
-                <Key>Upvotes: {upvotE}</Key>
+                <Key>Upvotes: {upvotE}&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</Key>
               </Statistic>
               <Statistic key={2}>
                 <Key>Downvotes: {downvotE}</Key>

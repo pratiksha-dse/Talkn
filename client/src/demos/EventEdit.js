@@ -45,7 +45,7 @@ export default (props) => {
   const userLP = () => {
     return (
       <>
-        <AnimationRevealPage>
+        {/* <AnimationRevealPage> */}
           <Hero getstarted="#bookaslot" />
           <div id="eventdedicated">
             <EventDedicated event={event} />
@@ -56,7 +56,7 @@ export default (props) => {
           <div id="questionedit">
             <EventEdit eventOld={event} SEID={eventID} />
           </div>
-        </AnimationRevealPage>
+        {/* </AnimationRevealPage> */}
         <Footer />
       </>
     );

@@ -28,14 +28,14 @@ export default () => {
   const userLP = () => {
     return (
       <>
-        <AnimationRevealPage>
+        {/* <AnimationRevealPage> */}
           <Hero getstarted="#bookaslot" />
         
           <div id="addquestions">
             <AddEvents user={user}/>
           </div>
          
-        </AnimationRevealPage>
+        {/* </AnimationRevealPage> */}
         <Footer />
       </>
     );

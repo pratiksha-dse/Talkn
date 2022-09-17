@@ -7,7 +7,7 @@ const AnswerSchema = new mongoose.Schema({
     },
     media :{
         type : String,
-        required : true,
+        // required : true,
         min : 5
     },
     SEID :{
