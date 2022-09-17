@@ -13,12 +13,12 @@ export default () => {
   const userLP = () => {
       return (
         <>
-          <AnimationRevealPage>
+          {/* <AnimationRevealPage> */}
             <Hero getstarted="#bookaslot" />
             <div id="blogs">
               <UserBlogDetails />
             </div>
-          </AnimationRevealPage>
+          {/* </AnimationRevealPage> */}
            <Footer />
         </>)
 };

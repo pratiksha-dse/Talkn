@@ -27,14 +27,14 @@ export default () => {
   const adminLP = () => {
     return (
       <>
-        <AnimationRevealPage>
+        {/* <AnimationRevealPage> */}
           <Hero getstarted="#bookaslot" />
           <div id="admin_incidents">
             <EventDetails />
           </div>
          
          
-        </AnimationRevealPage>
+        {/* </AnimationRevealPage> */}
         <Footer />
       </>
     );

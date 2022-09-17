@@ -41,7 +41,7 @@ export default (props) => {
   const authLP = () => {
     return (
       <>
-        <AnimationRevealPage>
+        {/* <AnimationRevealPage> */}
           <Hero getstarted="#bookaslot" />
         
           <div id="blogdedicated">
@@ -51,7 +51,7 @@ export default (props) => {
             <AddComments BID={blogID} email={user.email}/>
           </div>
          
-        </AnimationRevealPage>
+        {/* </AnimationRevealPage> */}
         <Footer />
       </>
     );

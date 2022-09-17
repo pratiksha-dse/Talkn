@@ -41,7 +41,7 @@ export default (props) => {
   const authLP = () => {
     return (
       <>
-        <AnimationRevealPage>
+        {/* <AnimationRevealPage> */}
           <Hero getstarted="#bookaslot" />
         
           <div id="eventdedicated">
@@ -50,7 +50,7 @@ export default (props) => {
           <div id="addanswers">
             <AddAnswers SEID={eventID} email={user.email}/>
           </div>
-        </AnimationRevealPage>
+        {/* </AnimationRevealPage> */}
         <Footer />
       </>
     );
