@@ -79,19 +79,19 @@ const AddAnswers = ({
     isAdmin,
   } = useContext(AuthContext);
   let currentDate = new Date();
-let date=currentDate.getDate()+ "/" +(currentDate.getMonth() + 1) + "/" + currentDate.getFullYear();
-let time = currentDate.getHours() + ":" + currentDate.getMinutes();
+  let date = currentDate.getDate() + "/" + (currentDate.getMonth() + 1) + "/" + currentDate.getFullYear();
+  let time = currentDate.getHours() + ":" + currentDate.getMinutes();
   const [answer, setAnswer] = useState({
     answer: "",
     media: "",
     SEID: SEID,
-    email:user.email,
-    name:user.name,
-    picture:user.picture,
-    date:date,
-    time:time,
-    upvote:0,
-    downvote:0,
+    email: user.email,
+    name: user.name,
+    picture: user.picture,
+    date: date,
+    time: time,
+    upvote: 0,
+    downvote: 0,
   });
   const [message, setMessage] = useState(null);
   let timerID = useRef(null);
@@ -111,13 +111,13 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
       answer: "",
       media: "",
       SEID: "",
-      email:"",
-      name:"",
-      picture:"",
-      date:"",
-      time:"",
-      upvote:0,
-      downvote:0,
+      email: "",
+      name: "",
+      picture: "",
+      date: "",
+      time: "",
+      upvote: 0,
+      downvote: 0,
     });
   };
 
@@ -159,37 +159,65 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     });
     setAnswers(removeItemOnce(tmpAnswers, answer));
   };
-  const editAnswer =(answer,AID)=>{
+  const editAnswer = (answer, AID) => {
     const tmpAnswers = [...answers];
-    AnswerService.editAnswer(answer,AID).then((data) => {
+    AnswerService.editAnswer(answer, AID).then((data) => {
       const { message } = data;
       setMessage(message);
     });
     setAnswers(removeItemOnce(tmpAnswers, answer));
   }
-  const upvoteAnswer =(answer,AID,index)=>{
+  const [likes, setLikes] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
+  const [dislikes, setDisLikes] = useState(0);
+  const [isClicked1, setIsClicked1] = useState(false);
+  const upvoteAnswer = (answer, AID, index) => {
     const tmpAnswers = [...answers];
-    var answers1=removeItemOnce(tmpAnswers, answer)
-    answer.upvote=answer.upvote+1; 
-    answers1.splice(index,0,answer)
-    setAnswers(answers1);
-    AnswerService.editAnswer(answer,AID).then((data) => {
-      const { message } = data;
-      setMessage(message);
-    });
-    alert("Answer upvoted")
+    var answers1 = removeItemOnce(tmpAnswers, answer)
+    if (isClicked) {
+      setLikes(likes - 1);
+      answer.upvote = likes - 1;
+      answers1.splice(index, 0, answer)
+      setAnswers(answers1);
+      AnswerService.editAnswer(answer, AID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
+    } else {
+      setLikes(answer.upvote + 1);
+      answer.upvote = answer.upvote + 1;
+      answers1.splice(index, 0, answer)
+      setAnswers(answers1);
+      AnswerService.editAnswer(answer, AID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
+    }
+    setIsClicked(!isClicked);
   }
-  const downvoteAnswer =(answer,AID,index)=>{
+  const downvoteAnswer = (answer, AID, index) => {
     const tmpAnswers = [...answers];
-    var answers1=removeItemOnce(tmpAnswers, answer)
-    answer.downvote=answer.downvote+1;
-    answers1.splice(index,0,answer)
-    setAnswers(answers1);
-    AnswerService.editAnswer(answer,AID).then((data) => {
-      const { message } = data;
-      setMessage(message);
-    });
-    alert("Answer downvoted");
+    var answers1 = removeItemOnce(tmpAnswers, answer)
+    if (isClicked1) {
+      setDisLikes(dislikes - 1);
+      answer.downvote = dislikes - 1;
+      answers1.splice(index, 0, answer)
+      setAnswers(answers1);
+      AnswerService.editAnswer(answer, AID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
+    } else {
+      setDisLikes(answer.downvote + 1);
+      answer.downvote = answer.downvote + 1;
+      answers1.splice(index, 0, answer)
+      setAnswers(answers1);
+      AnswerService.editAnswer(answer, AID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
+    }
+    setIsClicked1(!isClicked1);
   }
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
@@ -198,7 +226,7 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     else setActiveQuestionIndex(questionIndex);
   };
   const [answers, setAnswers] = useState([]);
-  
+
   return (
     // <AnimationRevealPage>
     <Container tw="m-8">
@@ -217,7 +245,7 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
               </HeaderContent>
               <br />
               <br />
-              <br /> 
+              <br />
               <Form onSubmit={onSubmit}>
                 <Input
                   type="text"
@@ -244,13 +272,13 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
             </>
           ) : null}  <HeaderContent>
             {/* <Subheading>ClubNation</Subheading> */}
-                <Heading>Answers</Heading>
-                <p align="center">
-               {/* <Description>Here are some answers and tools which will help you.</Description>  */}
-                </p>
-              </HeaderContent>
+            <Heading>Answers</Heading>
+            <p align="center">
+              {/* <Description>Here are some answers and tools which will help you.</Description>  */}
+            </p>
+          </HeaderContent>
           <FAQSContainer>
-            {answers.map((answer, index) =>  (
+            {answers.map((answer, index) => (
               <FAQ>
                 <Question
                   key={index}
@@ -261,9 +289,9 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
                 >
                   <img src={answer.picture} alt="logo" css={logocss} />
                   <QuestionText>{answer.name}
-                   </QuestionText>
+                  </QuestionText>
                   <p>Date: {answer.date} &nbsp;&nbsp;&nbsp;&nbsp; Time: {answer.time}</p>
-                 <p> Upvote:{answer.upvote} Downvote:{answer.downvote}</p>
+                  <p> Likes:{answer.upvote} Dislikes:{answer.downvote}</p>
                   <QuestionToggleIcon
                     variants={{
                       collapsed: { rotate: 0 },
@@ -305,7 +333,7 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
                     <br />
                   </p>
                   <p align="right">
-                    {answer.email===user.email ? (
+                    {answer.email === user.email ? (
                       <NewPrimaryButton
                         as="a"
                         ref={inputRef}
@@ -313,30 +341,24 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
                       >
                         {(primaryButtonText = "Delete")}
                       </NewPrimaryButton>
-                      
+
                     ) : (
-                      <NewPrimaryButton
-                        as="b"
-                        target="_blank"
-                        href={answer.media}
-                      >
-                        {(primaryButtonText = "View")}
-                      </NewPrimaryButton>
-                    )} &nbsp;&nbsp;
-                       <NewPrimaryButton
-                        as="c"
-                        ref={inputRef}
-                        onClick={() => upvoteAnswer(answer,answer._id,index)}
-                      >
-                        {(primaryButtonText = "Upvote")}
-                      </NewPrimaryButton> &nbsp;&nbsp;
-                      <NewPrimaryButton
-                        as="d"
-                        ref={inputRef}
-                        onClick={() => downvoteAnswer(answer,answer._id,index)}
-                      >
-                        {(primaryButtonText = "Downvote")}
-                      </NewPrimaryButton>
+                      null
+                    )}&nbsp;&nbsp;
+                    <NewPrimaryButton
+                      as="c"
+                      ref={inputRef}
+                      onClick={() => upvoteAnswer(answer, answer._id, index)}
+                    >
+                      {(primaryButtonText = "Like |" + answer.upvote)}
+                    </NewPrimaryButton> &nbsp;&nbsp;
+                    <NewPrimaryButton
+                      as="d"
+                      ref={inputRef}
+                      onClick={() => downvoteAnswer(answer, answer._id, index)}
+                    >
+                      {(primaryButtonText = "Dislike |" + answer.downvote)}
+                    </NewPrimaryButton>
 
                   </p>
                 </Answer>

@@ -167,29 +167,57 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
     });
     setComments(removeItemOnce(tmpComments, comment));
   }
+  const [likes, setLikes] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
+  const [dislikes, setDisLikes] = useState(0);
+  const [isClicked1, setIsClicked1] = useState(false);
   const upvoteComment =(comment,CID,index)=>{
     const tmpComments = [...comments];
     var comments1=removeItemOnce(tmpComments, comment)
-    comment.upvote=comment.upvote+1;
-    comments1.splice(index,0,comment)
-    setComments(comments1);
-    CommentService.editComment(comment,CID).then((data) => {
-      const { message } = data;
-      setMessage(message);
-    });
-    alert("Comment upvoted");
+    if (isClicked) {
+      setLikes(likes - 1);
+      comment.upvote = likes - 1;
+      comments1.splice(index,0,comment)
+      setComments(comments1);
+      CommentService.editComment(comment,CID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
+    } else {
+      setLikes(comment.upvote + 1);
+      comment.upvote = comment.upvote + 1;
+      comments1.splice(index,0,comment)
+      setComments(comments1);
+      CommentService.editComment(comment,CID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
+    }
+    setIsClicked(!isClicked);
   }
   const downvoteComment =(comment,CID,index)=>{
     const tmpComments = [...comments];
     var comments1=removeItemOnce(tmpComments, comment)
-    comment.downvote=comment.downvote+1;
-    comments1.splice(index,0,comment)
-    setComments(comments1);
-    CommentService.editComment(comment,CID).then((data) => {
-      const { message } = data;
-      setMessage(message);
-    });
-    alert("Comment downvoted");
+    if (isClicked1) {
+      setDisLikes(dislikes - 1);
+      comment.downvote = dislikes - 1;
+      comments1.splice(index,0,comment)
+      setComments(comments1);
+      CommentService.editComment(comment,CID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
+    } else {
+      setDisLikes(comment.downvote + 1);
+      comment.downvote = comment.downvote + 1;
+      comments1.splice(index,0,comment)
+      setComments(comments1);
+      CommentService.editComment(comment,CID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
+    }
+    setIsClicked1(!isClicked1);
   }
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
 
@@ -314,28 +342,21 @@ let time = currentDate.getHours() + ":" + currentDate.getMinutes();
                         {(primaryButtonText = "Delete")}
                       </NewPrimaryButton>
                       
-                    ) : (
-                      <NewPrimaryButton
-                        as="b"
-                        target="_blank"
-                        href={comment.media}
-                      >
-                        {(primaryButtonText = "View")}
-                      </NewPrimaryButton>
+                    ) : (null
                     )} &nbsp;&nbsp;
                        <NewPrimaryButton
                         as="c"
                         ref={inputRef}
                         onClick={() => upvoteComment(comment,comment._id,index)}
                       >
-                        {(primaryButtonText = "Upvote")}
+                        {(primaryButtonText = "Like |" + comment.upvote)}
                       </NewPrimaryButton> &nbsp;&nbsp;
                       <NewPrimaryButton
                         as="d"
                         ref={inputRef}
                         onClick={() => downvoteComment(comment,comment._id,index)}
                       >
-                        {(primaryButtonText = "Downvote")}
+                        {(primaryButtonText = "Dislike |" + comment.downvote)}
                       </NewPrimaryButton>
 
                   </p>

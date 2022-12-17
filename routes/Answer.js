@@ -56,7 +56,7 @@ answerRouter.post("/editanswer", (req, res) => {
         message: { msgBody: "Answer failed to delete", msgError: true },
       });
     } else {
-      console.log("Answer deleted successfully");
+      console.log("Answer edited successfully");
     }
   });
 });
