@@ -124,7 +124,7 @@ export default () => {
   };
   const [query3, setQuery3] = useState("");
   const onChange3 = (e) => {
-    setQuery2(e.target.value);
+    setQuery3(e.target.value);
   };
   const {
     user,

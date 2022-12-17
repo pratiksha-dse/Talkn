@@ -124,7 +124,7 @@ export default () => {
   };
   const [query3, setQuery3] = useState("");
   const onChange3 = (e) => {
-    setQuery2(e.target.value);
+    setQuery3(e.target.value);
   };
   const {
     user,
@@ -235,7 +235,7 @@ export default () => {
 
            {events.map((event, index)=> {
             console.log(user.email);
-              if ((query1 == "" && query2 == "" && query3== "") || (query1 != "" && event.tag.match(query1)) || (query2 != "" && event.name.match(query2)) || (query3!="" && event.email.match(query3))) {
+              if ((query1 == "" && query2 == "" && query3== "") || (query1 != "" && event.tag.toLowerCase().match(query1.toLowerCase())) || (query2 != "" && event.name.toLowerCase().match(query2.toLowerCase())) || (query3!="" && event.email.toLowerCase().match(query3.toLowerCase()))) {
               return (
                 <Card key={index}>
            <CardImage imageSrc={event.img} />
