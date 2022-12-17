@@ -81,6 +81,7 @@ const Navbar = (props) => {
       <NavLink href="#blogs">Blogs</NavLink>
       <NavLink href="#addblogs">Add Blog</NavLink>
       <NavLink href="#letstalk">Contact Us</NavLink>
+      <NavLink href="#chatWindow">Chat</NavLink>
       </>
     );
   };
@@ -100,9 +101,10 @@ const Navbar = (props) => {
     }
   };
   const [Userdetail, setUserdetail] = useState({
+    id: "",
     name: "",
     email: "",
-
+    image: "",
   });
   const [msg, setMsg] = useState(null);
   let timerID = useRef(null);
@@ -117,21 +119,21 @@ const Navbar = (props) => {
   };
   const handleLogin = (result) => {
     AuthService.login({ token: result.tokenId }).then((data) => {
-      console.log(data);
+      // console.log(data);
       const { isAuthenticated, user, message, isAdmin } = data;
       if (isAuthenticated) {
         authContext.setUser(user);
-        setUserdetail({name:user.name,email:user.email})
-        console.log("debug")
         console.log(user);
+        setUserdetail({id:user.iat, name:user.name,email:user.email,image: user.picture});
+        console.log("debug")
         authContext.setIsAuthenticated(isAuthenticated);
         authContext.setIsAdmin(isAdmin);
-        console.log(Userdetail)
+        // console.log(Userdetail)
 
         UserService.getUserByemail(user.email).then((data)=>{
             console.log(data);
             if(data.user==null){
-              UserService.addUser({name:user.name,email:user.email}).then((data) => {
+              UserService.addUser({id:user.id,name:user.name,email:user.email,image:user.picture}).then((data) => {
                 const { msg } = data;
                 setMsg(msg);
               });

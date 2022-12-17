@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 // name : "", username : "", phone : ""
+
 const UserSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -15,8 +20,10 @@ const UserSchema = new mongoose.Schema({
     min: 10,
     max: 13,
   },
-
-   userIds: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
+  image: {
+    type: String,
+  },
+  userIds: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
 });
 
 module.exports = mongoose.model("User", UserSchema);

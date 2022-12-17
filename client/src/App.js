@@ -16,6 +16,8 @@ import Blog from "demos/Blog";
 // import AdminEvent from "demos/AdminEvent";
 import BlogEdit from "demos/BlogEdit";
 import AddBlog from "demos/AddBlog";
+
+import ChatWindow from "demos/ChatWindow";
 // import YourEvents from "demos/YourEvents";
 
 
@@ -36,6 +38,7 @@ export default function App() {
         <UserRoute path="/blog_edit" component={BlogEdit} />
         <UserRoute path="/blog" component={BlogView} />
         <UserRoute path="/addblogs" component={AddBlog} />
+        <UserRoute path="/chatWindow" component={ChatWindow}/>
 
         {/* <AdminRoute exact path="/admin_incidents" component={AdminEvent} />
         <AdminRoute path="/admin_incident" component={EventView} /> */}
