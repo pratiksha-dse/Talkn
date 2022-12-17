@@ -1,4 +1,4 @@
-import React,{useContext,useState} from "react";
+import React, { useContext, useState } from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
@@ -71,8 +71,10 @@ export default ({
     user,
     isAdmin,
   } = useContext(AuthContext);
-  // The textOnLeft boolean prop can be used to display either the text on left or right side of the image.
-  //Change the statistics variable as you like, add or delete objects
+  const [likes, setLikes] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
+  const [dislikes, setDisLikes] = useState(0);
+  const [isClicked1, setIsClicked1] = useState(false);
   const defaultStatistics = [
     {
       key: "Date",
@@ -84,21 +86,35 @@ export default ({
     },
   ];
   const [message, setMessage] = useState(null);
-  const upvoteBlog =(blog,BID)=>{
-    blog.upvote=blog.upvote+1; 
-    BlogService.editBlog(blog,BID).then((data) => {
+  
+  const upvoteBlog = (blog, BID) => {
+    if (isClicked) {
+      setLikes(likes - 1);
+    } else {
+      setLikes(likes + 1);
+    }
+    setIsClicked(!isClicked);
+    blog.upvote = likes;
+    BlogService.editBlog(blog, BID).then((data) => {
       const { message } = data;
       setMessage(message);
     });
-    alert("Blog upvoted")
-  }
-  const downvoteBlog =(blog,BID)=>{
-    blog.downvote=blog.downvote+1; 
-    BlogService.editBlog(blog,BID).then((data) => {
+    // alert("Blog upvoted")
+  };
+
+  const downvoteBlog = (blog, BID) => {
+    if (isClicked1) {
+      setDisLikes(dislikes - 1);
+    } else {
+      setDisLikes(dislikes + 1);
+    }
+    setIsClicked1(!isClicked1);
+    blog.downvote =dislikes;
+    BlogService.editBlog(blog, BID).then((data) => {
       const { message } = data;
       setMessage(message);
     });
-    alert("Blog downvoted")
+    // alert("Blog downvoted") 
   }
 
   if (!statistics) statistics = defaultStatistics;
@@ -112,7 +128,7 @@ export default ({
       : null
     : imageSrc;
 
-    const taG = (blog ? blog.tag : null)
+  const taG = (blog ? blog.tag : null)
     ? blog
       ? blog.tag
       : null
@@ -138,17 +154,17 @@ export default ({
       ? blog.name
       : null
     : null;
-    const picturE = (blog ? blog.picture: null)
+  const picturE = (blog ? blog.picture : null)
     ? blog
       ? blog.picture
       : null
     : null;
-    const upvotE = (blog ? blog.upvote: 0)
+  const upvotE = (blog ? blog.upvote : 0)
     ? blog
       ? blog.upvote
       : 0
     : 0;
-    const downvotE = (blog ? blog.downvote: 0)
+  const downvotE = (blog ? blog.downvote : 0)
     ? blog
       ? blog.downvote
       : 0
@@ -177,16 +193,16 @@ export default ({
                 : heading}
             </Heading>
             <Description>
-            {(blog ? blog.description : null)
+              {(blog ? blog.description : null)
                 ? blog
                   ? blog.description
                   : null
                 : description}
             </Description>
             <Description>
-                Tag: {taG}
+              Tag: {taG}
             </Description>
-            
+
             <Statistics>
               <Statistic key={1}>
                 <Key>Date: {datE}&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</Key>
@@ -199,43 +215,45 @@ export default ({
 
             </Statistics>
             <Statistics>
-            <Statistic key={1}>
+              <Statistic key={1}>
                 <Key>Name: {namE}</Key>
               </Statistic>
               <Statistic key={2}>
                 <Key>Email: {emaiL}</Key>
               </Statistic>
             </Statistics>
-            <Statistics>
-            <Statistic key={1}>
+            {/* <Statistics>
+              <Statistic key={1}>
                 <Key>Upvotes: {upvotE}&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</Key>
               </Statistic>
               <Statistic key={2}>
                 <Key>Downvotes: {downvotE}</Key>
               </Statistic>
-            </Statistics>
+            </Statistics> */} 
             <Statistics>
-            <Statistic key={1}>
+              <Statistic key={1}>
+                <Key>
+                  <button>
+                    <PrimaryLink
+                      onClick={() => upvoteBlog(blog, blog._id)}
+                    >
+                      <span className="likes-counter">{`Like | ${upvotE}`}</span>
+                    </PrimaryLink>
+                  </button></Key>
+
+
+              </Statistic>
+              <Statistic key={2}>
                 <Key>  <button>
-              <PrimaryLink
-                onClick={()=>upvoteBlog(blog,blog._id)}
-              >
-              Upvote
-              </PrimaryLink>
-            </button></Key>
-            
-            
+                  <PrimaryLink
+                    onClick={() => downvoteBlog(blog, blog._id)}
+                  >
+                   <span className="dislikes-counter">{`Dislike | ${downvotE }`}</span>
+                  </PrimaryLink>
+                </button></Key>
               </Statistic>
-            <Statistic key={2}>
-            <Key>  <button>
-              <PrimaryLink
-                onClick = {()=>downvoteBlog(blog,blog._id)}
-              >
-               Downvote
-              </PrimaryLink>
-            </button></Key>
-              </Statistic>
-              </Statistics>
+            </Statistics>
+
           </TextContent>
         </TextColumn>
       </TwoColumn>
