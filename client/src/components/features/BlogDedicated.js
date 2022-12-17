@@ -86,34 +86,45 @@ export default ({
     },
   ];
   const [message, setMessage] = useState(null);
-  
+
   const upvoteBlog = (blog, BID) => {
     if (isClicked) {
       setLikes(likes - 1);
+      blog.upvote = likes - 1;
+      BlogService.editBlog(blog, BID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
     } else {
-      setLikes(likes + 1);
+      setLikes(blog.upvote + 1);
+      blog.upvote = blog.upvote + 1;
+      BlogService.editBlog(blog, BID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
     }
     setIsClicked(!isClicked);
-    blog.upvote = likes;
-    BlogService.editBlog(blog, BID).then((data) => {
-      const { message } = data;
-      setMessage(message);
-    });
     // alert("Blog upvoted")
   };
 
   const downvoteBlog = (blog, BID) => {
     if (isClicked1) {
       setDisLikes(dislikes - 1);
+      blog.downvote = dislikes-1;
+      BlogService.editBlog(blog, BID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
     } else {
-      setDisLikes(dislikes + 1);
+      setDisLikes(blog.downvote + 1);
+      blog.downvote = blog.downvote + 1;
+      BlogService.editBlog(blog, BID).then((data) => {
+        const { message } = data;
+        setMessage(message);
+      });
     }
     setIsClicked1(!isClicked1);
-    blog.downvote =dislikes;
-    BlogService.editBlog(blog, BID).then((data) => {
-      const { message } = data;
-      setMessage(message);
-    });
+   
     // alert("Blog downvoted") 
   }
 
@@ -229,7 +240,7 @@ export default ({
               <Statistic key={2}>
                 <Key>Downvotes: {downvotE}</Key>
               </Statistic>
-            </Statistics> */} 
+            </Statistics> */}
             <Statistics>
               <Statistic key={1}>
                 <Key>
@@ -248,7 +259,7 @@ export default ({
                   <PrimaryLink
                     onClick={() => downvoteBlog(blog, blog._id)}
                   >
-                   <span className="dislikes-counter">{`Dislike | ${downvotE }`}</span>
+                    <span className="dislikes-counter">{`Dislike | ${downvotE}`}</span>
                   </PrimaryLink>
                 </button></Key>
               </Statistic>
