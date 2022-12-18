@@ -11865,6 +11865,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   "version" "18.2.0"
 
+"react-js-loader@^0.1.0":
+  "integrity" "sha512-ROjgt1+3bfxigYBKAEa3pOTUJRCZgksymPoQ9djgxLEpqAXM/zin5cVt2MFs6xZ4zqM+g5XhJdgYUN9FYtNpCQ=="
+  "resolved" "https://registry.npmjs.org/react-js-loader/-/react-js-loader-0.1.0.tgz"
+  "version" "0.1.0"
+
 "react-lifecycles-compat@^3.0.0", "react-lifecycles-compat@^3.0.2", "react-lifecycles-compat@^3.0.4":
   "integrity" "sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA=="
   "resolved" "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
