@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React,{ useState, useEffect } from "react";
 import { useChatContext } from "stream-chat-react";
 import ChannelItem from "./channelItem";
-
+import Loader from "react-js-loader";
 const Container = styled.div`
    display: flex;
 
@@ -44,7 +44,7 @@ export default function BrowseChannel ({onClose}) {
     
     return (
         <Container>
-            {loadingChannels?(<div className="loading-text">Loading Channels.....</div>): (
+            {loadingChannels?(<div><div style={{height:"30vh", width:"75vw"}}></div><Loader  type="spinner-cub" bgColor={"#402596"} title={"Loading Channels"} color={"#402596"} size={70} /></div>): (
                 <ul>
                 {channels.map((c) => {
                     return (
