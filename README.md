@@ -11,7 +11,7 @@ Our website provides you with a very cool feature through which you can make you
 - Database - MongoDB Atlas
 - Back-end - NodeJS (ExpressJS)
 - Google API used for GSignIn
-- Blockchain- Using Stream API
+- Chat Feature- Using Stream API
 
 # Installing Packages
 
