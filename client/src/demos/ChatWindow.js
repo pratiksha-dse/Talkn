@@ -28,7 +28,7 @@ const Container = styled.div`
     }
 `;
 
-const API_KEY = "v246ajm6p5d5";
+const API_KEY = "mw8n2sumwnsh";
 
 function ChatWindow() {
 
