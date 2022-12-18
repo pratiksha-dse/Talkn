@@ -1,17 +1,17 @@
-# ChildFly 
+# Talkn
 
 # Theme
-Blockchain
+Education
 
 # About the Project
-We plan to build a couple of versions of ChildFly, one for the people to report and the other for the administration to monitor the reports and distribute ethers. The entire interactive front-end of the website will be built using ReactJs, while the backend will be in Node Js, MongoDB. Ganache and Metamask will be used to generate and manage test ethers and Solidity for writing code responsible for managing transfer of ethers.
+Our website provides you with a very cool feature through which you can make your community of your interest and can add or connect with more people where you can talk to them more friendly and can share your own opinions. Here we are giving you an opportunity to get answers to all of your questions and a platform to build amazing communities to grow at a very high pace along with the world.
 
-# Tech Stack - MERN, Blockchain- Solidity, Ganache
+# Tech Stack - MERN, Stream
 - Front-end - ReactJS
 - Database - MongoDB Atlas
 - Back-end - NodeJS (ExpressJS)
 - Google API used for GSignIn
-- Blockchain- Solidity, Ganache
+- Chat Feature- Using Stream API
 
 # Installing Packages
 
@@ -28,18 +28,3 @@ We plan to build a couple of versions of ChildFly, one for the people to report 
     - Terminal 2 (Front-End)
     > cd client
     > npm start
-
-# Blockchain- Metamask Account Setup
-
-Set up Metamask account  by adding chrome extension from the following link:
-https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en 
-Download and set up Ganache from the following address:
-https://trufflesuite.com/ganache/ 
-
-Open Ganache, select QuickStart, once the accounts are displayed click on the key icon of the first account and copy the private key of that account.
-
-Now sign into Metamask and add Ganache as a test network in place of Ethereum Mainnet.
-
-Next select  import account option  and paste the private account key at the designated place copied from Ganache. Click on import, now the admin account is hooked up with ganache and contains 100 test ethers.
-
-
