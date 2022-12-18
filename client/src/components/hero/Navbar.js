@@ -81,7 +81,7 @@ const Navbar = (props) => {
       <NavLink href="#blogs">Blogs</NavLink>
       <NavLink href="#addblogs">Add Blog</NavLink>
       <NavLink href="#letstalk">Contact Us</NavLink>
-      <NavLink href="#chatWindow">Chat</NavLink>
+      <NavLink href="#chatWindow">Connect & Chat</NavLink>
       </>
     );
   };
