@@ -14,9 +14,9 @@ const Container = styled.div`
 
     .str-chat__list {
         height: calc(100vh - 70px);
-        background-color:rgba(0, 0, 0, 0.4);
+        // background-color:rgba(0, 0, 0, 0.4);
         // background-image: url(https://e0.pxfuel.com/wallpapers/518/286/desktop-wallpaper-3d-abstract-colorful-doodle-drawing-small-retro-art.jpg);
-        background-image: url(https://wallpaperaccess.com/full/5494980.jpg);
+        background-image: url(https://www.filepicker.io/api/file/u5frNNlBQDQbBX0nh9Mg);
         background-size: cover;
         // opacity:0.5;
     }
