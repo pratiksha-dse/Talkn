@@ -17,6 +17,7 @@ const Form = styled.form`
             color: #333;
             margin-bottom: 10px;
             font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         input,textarea {
@@ -26,6 +27,7 @@ const Form = styled.form`
             border: 1px solid #999;
             color: #333;
             font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .submit {

@@ -34,7 +34,7 @@ button {
     margin-left: auto;
 
     &.hover {
-        background-color: #333;
+        background-color: #402596;
         color: white;
     }
 

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 
 const Container = styled.div`
     height: 100vh;
-    background-color: #333;
+    background-color: #402596;
     padding: 20px 10px;
 
     .header {
@@ -17,7 +17,9 @@ const Container = styled.div`
         h2{
             color: white;
             margin: 0 0 10px;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight:bold;
+            font-family: Arial, Helvetica, sans-serif;
         }
         
     }
